@@ -52,5 +52,15 @@
 <script src="{{ asset('assets/js/select2/select2.full.min.js')}}"></script>
 <script src="{{ asset('assets/js/select2/select2-custom.js')}}"></script>
 
+<script src="{{ asset('assetsjs/datepicker/date-picker/datepicker.js')}}"></script>
+<script src="{{ asset('assetsjs/datepicker/date-picker/datepicker.en.js')}}"></script>
+<script src="{{ asset('assetsjs/datepicker/date-picker/datepicker.custom.js')}}"></script>
+<script src="{{ asset('assetsjs/task/custom.js"></script>
+
+
+<script src="{{ asset('assets/js/form-validation-custom.js')}}"></script>
+
+@stack('js')
+
 <script>new WOW().init();</script>
 

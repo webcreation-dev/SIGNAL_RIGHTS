@@ -42,6 +42,9 @@
 <script src="{{ asset('assets/js/height-equal.js')}}"></script>
 <script src="{{ asset('assets/js/animation/wow/wow.min.js')}}"></script>
 <script src="{{ asset('assets/js/form-wizard/form-wizard-two.js')}}"></script>
+
+<script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js')}}"></script>
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="{{ asset('assets/js/script.js')}}"></script>

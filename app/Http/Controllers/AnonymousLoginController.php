@@ -12,10 +12,12 @@ class AnonymousLoginController extends Controller
     public function login(Request $request)
     {
         // Récupérer les données du formulaire
-        $credentials = $request->only('code');
+        $credentials = $request->only('secret_code', 'generate_code');
 
         // Vérifier le code secret
-        $user = User::where('code', $credentials['code'])->first();
+        $user = User::where('secret_code', $credentials['secret_code'])
+                        ->where('generate_code', $credentials['generate_code'])
+                        ->first();
         if (!$user) {
             return redirect()->back()->withErrors(['code' => 'Code secret invalide']);
         }
@@ -25,6 +27,11 @@ class AnonymousLoginController extends Controller
 
         // Redirection de l'utilisateur
         return redirect()->intended(RouteServiceProvider::HOME);
+    }
+
+    public function getLoginForm()
+    {
+        return view('auth.anonymous_login');
     }
 
 }

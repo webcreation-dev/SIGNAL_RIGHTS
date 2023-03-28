@@ -31,24 +31,24 @@
                         <nav style="background: #262128;"
                             class="navbar navbar-b navbar-dark navbar-trans navbar-expand-xl fixed-top nav-padding"
                             id="sidebar-menu"><a class="navbar-brand p-0" href="#"><img class="img-fluid"
-                                    src="{{ asset('assets/images/landing/landing_logo.png')}}" alt=""></a>
+                                    src="{{ asset('assets/images/landing/logo.png')}}" alt=""></a>
                             <button class="navbar-toggler navabr_btn-set custom_nav" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault"
                                 aria-expanded="false"
                                 aria-label="Toggle navigation"><span></span><span></span><span></span></button>
                             <div class="navbar-collapse justify-content-center collapse hidenav" id="navbarDefault">
                                 <ul class="navbar-nav navbar_nav_modify" id="scroll-spy">
-                                    <li class="nav-item"><a class="nav-link" href="#layout">Layouts</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#frameworks">Frameworks</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#components">Components</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#applications">Applications</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#documentation">Documentation</a>
+                                    <li class="nav-item"><a class="nav-link" href="#layout">ACCUEIL</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#frameworks">RENSEIGNEMENTS</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{route('denunciations.create')}}">DENONCER</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{route('get.anonymous.login')}}">SUIVRE MA DEMANDE</a></li>
+                                    {{-- <li class="nav-item"><a class="nav-link" href="#documentation">Documentation</a> --}}
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="#faq">Faq</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
                                 </ul>
                             </div>
                             <div class="buy-btn rounded-pill"><a class="nav-link js-scroll"
-                                    href="https://1.envato.market/3GVzd" target="_blank">Buy Now</a></div>
+                                  href="https://1.envato.market/3GVzd" target="_blank">CONNEXION</a></div>
                         </nav>
                     </header>
                 </div>
@@ -86,7 +86,7 @@
                             <div class="col-md-3 col-6">
                                 <div class="customer-wrapper">
                                     <div class="customer-box"> <img
-                                            src="{{ asset('assets/images/landing/customers/1.svg')}}" alt="">
+                                            src="{{ asset('assets/images/landing/customers/alert.png')}}" alt="">
                                         <h6 class="f-light mb-0 mt-2">Signalement de la plainte </h6>
                                     </div><img class="outline-box"
                                         src="{{ asset('assets/images/landing/decore/arrow-style-1.svg')}}" alt="">
@@ -95,7 +95,7 @@
                             <div class="col-md-3 col-6">
                                 <div class="customer-wrapper">
                                     <div class="customer-box"> <img
-                                            src="{{ asset('assets/images/landing/customers/2.svg')}}" alt="">
+                                            src="{{ asset('assets/images/landing/customers/treatment.png')}}" alt="">
                                         <h6 class="f-light mb-0 mt-2">Traitement de votre plainte</h6>
                                     </div><img class="outline-box"
                                         src="{{ asset('assets/images/landing/decore/arrow-style-2.svg')}}" alt="">
@@ -104,7 +104,7 @@
                             <div class="col-md-3 col-6">
                                 <div class="customer-wrapper">
                                     <div class="customer-box"> <img
-                                            src="{{ asset('assets/images/landing/customers/3.svg')}}" alt="">
+                                            src="{{ asset('assets/images/landing/customers/suivi.png')}}" alt="">
                                         <h6 class="f-light mb-0 mt-2">Suivi de votre plainte</h6>
                                     </div><img class="outline-box"
                                         src="{{ asset('assets/images/landing/decore/arrow-style-3.svg')}}" alt="">
@@ -113,7 +113,7 @@
                             <div class="col-md-3 col-6">
                                 <div class="customer-wrapper">
                                     <div class="customer-box"> <img
-                                            src="{{ asset('assets/images/landing/customers/4.svg')}}" alt="">
+                                            src="{{ asset('assets/images/landing/customers/confidentiality.png')}}" alt="">
                                         <h6 class="f-light mb-0 mt-2">Confidentialité des plaignants</h6>
                                     </div><img class="outline-box"
                                         src="{{ asset('assets/images/landing/decore/arrow-style-4.svg')}}" alt="">
@@ -152,7 +152,8 @@
                                                 </div>
                                             </div>
 
-                                            <form action="#test" method="POST" autocomplete="off">
+                                            <form action="{{route('denunciations.store')}}" class="needs-validation" novalidate="" enctype="multipart/form-data" method="POST">
+                                                @csrf
 
                                                 <div class="setup-content" id="step-1">
 
@@ -161,9 +162,10 @@
                                                             <div class="mb-3">
                                                                 <label class="form-label pull-left">Titre de la
                                                                     dénonciation</label>
-                                                                <input class="form-control"
-                                                                    id="exampleFormControlInput1" type="text"
+                                                                <input class="form-control" name="title"
+                                                                    id="exampleFormControlInput1" type="text" required="required"
                                                                     placeholder="Maltraitance des enfants">
+                                                                    <div class="valid-feedback pull-left">Validé !</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -174,7 +176,9 @@
                                                                 <label class="form-label pull-left"
                                                                     for="exampleFormControlTextarea4">Type de
                                                                     dénonciation</label>
-                                                                <select class="js-example-basic-single  col-sm-12">
+                                                                <select name="type" class="js-example-basic-single  col-sm-12"
+                                                                 required="required">
+                                                                    {{-- <option value="" selected disabled>Sélectionnez un type de dénonciation</option> --}}
                                                                     <optgroup label="Developer">
                                                                         <option value="AL">Alabama</option>
                                                                         <option value="WY">Wyoming</option>
@@ -186,6 +190,7 @@
                                                                     </optgroup>
                                                                 </select>
                                                             </div>
+                                                            <div class="valid-feedback pull-left">Validé !</div>
                                                         </div>
                                                     </div>
 
@@ -200,10 +205,21 @@
                                                             <div class="mb-3">
                                                                 <label class="form-label pull-left"
                                                                     for="exampleFormControlTextarea4">Lieu de l'incident</label>
-                                                                <input class="form-control" id="validationDefault03"
-                                                                    type="text" placeholder="City" required="">
+                                                                <input class="form-control" id="validationDefault03" required="required"
+                                                                    type="text" name="place" placeholder="Parakou">
+                                                                    <div class="valid-feedback pull-left">Validé !</div>
                                                             </div>
                                                         </div>
+                                                        <div class="col">
+                                                            <div class="mb-3">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label pull-left" for="exampleFormControlTextarea4">Date</label>
+                                                                    <input required class="form-control digits" name="date" type="date" value="2018-01-01">
+                                                                    <div class="valid-feedback pull-left">Validé !</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
 
                                                     <div class="row">
@@ -211,9 +227,10 @@
                                                             <div class="mb-3">
                                                                 <label class="form-label pull-left"
                                                                     for="exampleFormControlTextarea4">Description de l'incident</label>
-                                                                <textarea class="form-control"
+                                                                <textarea class="form-control" name="description" required
                                                                     id="exampleFormControlTextarea4"
                                                                     rows="3"></textarea>
+                                                                    <div class="valid-feedback pull-left">Validé !</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -221,6 +238,7 @@
                                                     <button class="btn btn-primary nextBtn pull-right"
                                                         type="button">Suivant</button>
                                                 </div>
+
                                                 <div class="setup-content" id="step-3">
 
                                                     <div class="row">
@@ -231,11 +249,12 @@
                                                                     </label>
                                                                 <div class="input-group"><span class="input-group-text"
                                                                         id="inputGroupPrepend2">@</span>
-                                                                    <input class="form-control"
+                                                                    <input class="form-control" name="secret_code"
                                                                         id="validationDefaultUsername" type="text"
-                                                                        placeholder="56892"
+                                                                        placeholder="56892" required="required"
                                                                         aria-describedby="inputGroupPrepend2"
-                                                                        required="">
+                                                                        >
+                                                                        <div class="valid-feedback pull-left">Validé !</div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -244,7 +263,8 @@
                                                                 <label class="form-label pull-left"
                                                                     for="exampleFormControlTextarea4">Preuves de l'incident
                                                                     </label>
-                                                                <input class="form-control" type="file">
+                                                                <input class="form-control" name="file_name" type="file" required="required" >
+                                                                <div class="valid-feedback pull-left">Validé !</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -270,6 +290,8 @@
 
     <x-footer-landing />
     <x-footer-crm />
+
+
 </body>
 
 </html>

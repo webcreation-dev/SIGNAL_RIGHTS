@@ -1,6 +1,6 @@
 "use strict";
 var notify = $.notify(
-  '<i class="fa fa-bell-o"></i><strong>Loading</strong> page Do not close this page...',
+  '<i class="fa fa-bell-o"></i><strong>Chargement</strong> de la page...',
   {
     type: "theme",
     allow_dismiss: true,
@@ -17,6 +17,6 @@ var notify = $.notify(
 setTimeout(function () {
   notify.update(
     "message",
-    '<i class="fa fa-bell-o"></i><strong>Loading</strong> Inner Data.'
+    '<i class="fa fa-bell-o"></i><strong>Bienvenue</strong> sur SIGNAL RIGHTS.'
   );
 }, 1000);

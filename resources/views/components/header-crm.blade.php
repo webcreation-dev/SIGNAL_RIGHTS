@@ -19,16 +19,17 @@
       <div class="left-header col-xxl-5 col-xl-6 col-lg-5 col-md-4 col-sm-3 p-0">
         <div class="notification-slider">
           <div class="d-flex h-100"> <img src="{{ asset('assets/images/giftools.gif')}}" alt="gif">
-            <h6 class="mb-0 f-w-400"><span class="font-primary">Don't Miss Out! </span><span class="f-light">Out new update has been release.</span></h6><i class="icon-arrow-top-right f-light"></i>
+            <h6 class="mb-0 f-w-400"><span class="font-primary">Aucune inquiétude ! </span><span class="f-light"> Vous etes au bon endroit.</span></h6><i class="icon-arrow-top-right f-light"></i>
           </div>
           <div class="d-flex h-100"><img src="{{ asset('assets/images/giftools.gif')}}" alt="gif">
-            <h6 class="mb-0 f-w-400"><span class="f-light">Something you love is now on sale! </span></h6><a class="ms-1" href="https://1.envato.market/3GVzd" target="_blank">Buy now !</a>
+            <h6 class="mb-0 f-w-400"><span class="f-light">Denoncer dans l'anonymat complet ! </span></h6>
+            {{-- <a class="ms-1" href="https://1.envato.market/3GVzd" target="_blank">Buy now !</a> --}}
           </div>
         </div>
       </div>
       <div class="nav-right col-xxl-7 col-xl-6 col-md-7 col-8 pull-right right-header p-0 ms-auto">
         <ul class="nav-menus">
-          <li class="language-nav">
+          {{-- <li class="language-nav">
             <div class="translate_wrapper">
               <div class="current_lang">
                 <div class="lang"><i class="flag-icon flag-icon-us"></i><span class="lang-txt">EN                               </span></div>
@@ -93,15 +94,15 @@
                 </div>
               </div>
             </div>
-          </li>
-          <li>
+          </li> --}}
+          {{-- <li>
             <div class="mode">
               <svg>
                 <use href="{{ asset('assets/svg/icon-sprite.svg')}}#moon"></use>
               </svg>
             </div>
-          </li>
-          <li class="cart-nav onhover-dropdown">
+          </li> --}}
+          {{-- <li class="cart-nav onhover-dropdown">
             <div class="cart-box">
               <svg>
                 <use href="{{ asset('assets/svg/icon-sprite.svg')}}#stroke-ecommerce')}}"></use>
@@ -146,7 +147,7 @@
                 <li class="text-center"><a class="d-block mb-3 view-cart f-w-700" href="cart.html">Go to your cart</a><a class="btn btn-primary view-checkout" href="checkout.html">Checkout</a></li>
               </ul>
             </div>
-          </li>
+          </li> --}}
           <li class="onhover-dropdown">
             <div class="notification-box">
               <svg>
@@ -173,9 +174,9 @@
             </div>
           </li>
           <li class="profile-nav onhover-dropdown pe-0 py-0">
-            <div class="media profile-media"><img class="b-r-10" src="{{ asset('assets/images/dashboard/profile.png')}}" alt="">
-              <div class="media-body"><span>Emay Walter</span>
-                <p class="mb-0 font-roboto">Admin <i class="middle fa fa-angle-down"></i></p>
+            <div class="media profile-media"><img class="b-r-10" width="35" height="35" src="{{ asset('assets/images/landing/profil.png')}}" alt="">
+              <div class="media-body"><span> #{{Auth::user()->secret_code}}  </span>
+                <p class="mb-0 font-roboto">Anonyme <i class="middle fa fa-angle-down"></i></p>
               </div>
             </div>
             <ul class="profile-dropdown onhover-show-div">
@@ -183,7 +184,16 @@
               <li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>
               <li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
               <li><a href="#"><i data-feather="settings"></i><span>Settings</span></a></li>
-              <li><a href="#"><i data-feather="log-in"> </i><span>Log in</span></a></li>
+              <li>
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <a href="route('logout')" onclick="event.preventDefault();
+                this.closest('form').submit();"
+
+                 > <i data-feather="log-in"> </i>LOGOUT</a>
+                </li>
+
+            </form>
             </ul>
           </li>
         </ul>

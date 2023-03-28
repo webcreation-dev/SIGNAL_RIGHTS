@@ -1,22 +1,42 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.auth')
 
-    <form method="POST" action="{{ route('anonymous.login') }}">
-        @csrf
+@section('content')
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-5"><img class="bg-img-cover bg-center" src="{{ asset('assets/images/login/3.jpg')}}" alt="looginpage"></div>
+        <div class="col-xl-7 p-0">
+          <div class="login-card login-dark">
+            <div>
+              <div><a class="logo text-start" href="index.html">
+                <img class="img-fluid for-light" src="{{ asset('assets/images/landing/amnesty.png')}}" alt="looginpage">
+                <img class="img-fluid for-dark" src="{{ asset('assets/images/landing/amnesty.png')}}" alt="looginpage"></a></div>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="code" :value="__('Code secret')" />
-            <x-text-input id="code" class="block mt-1 w-full" type="text" name="code" :value="old('code')" required autofocus autocomplete="code" />
-            <x-input-error :messages="$errors->get('code')" class="mt-2" />
+              <div class="login-main">
+                <form method="POST" action="{{ route('post.anonymous.login') }}" class="theme-form">
+                    @csrf
+
+                    <h4>Suivre votre demande</h4>
+                    <p>Entrez votre code secret & code de la demande</p>
+
+                    <div class="form-group">
+                      <label class="col-form-label">Code secret</label>
+                      <input name="secret_code" class="form-control" type="text" required="" placeholder="452698">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-form-label">Code demande</label>
+                        <input name="generate_code" class="form-control" type="text" required="" placeholder="854692">
+                    </div>
+
+                  <div class="form-group mb-0">
+
+                    <button class="btn btn-primary btn-block w-100" type="submit">Sign in</button>
+                  </div>
+                  </form>
+              </div>
+            </div>
+          </div>
         </div>
-
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+      </div>
+@endsection
