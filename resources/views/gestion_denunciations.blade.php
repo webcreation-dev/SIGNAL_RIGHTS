@@ -35,7 +35,7 @@
                     <div class="tab-pane fade active show" id="pills-created" role="tabpanel" aria-labelledby="pills-created-tab">
                       <div class="card mb-0">
                         <div class="card-header d-flex">
-                          <h5 class="mb-0">Votre dénonciation</h5><a href="#">STATUT : </i><span class="badge badge-success">{{$denunciation[0]->status}}</span></a>
+                          <h5 class="mb-0">Votre dénonciation</h5><a href="#">STATUT : </i><span class="badge badge-success">{{ App\Models\Denunciations::getNameStatus($denunciation->status)}}</span></a>
                         </div>
                         <div class="card-body p-0">
                           <div class="taskadd">
@@ -47,7 +47,7 @@
                                     {{-- <p class="project_name_0">General</p> --}}
                                   </td>
                                   <td>
-                                    <p class="task_desc_0">{{$denunciation[0]->title}}</p>
+                                    <p class="task_desc_0">{{$denunciation->title}}</p>
                                   </td>
                                 </tr>
 
@@ -57,7 +57,7 @@
                                       {{-- <p class="project_name_0">General</p> --}}
                                     </td>
                                     <td>
-                                      <p class="task_desc_0">{{$denunciation[0]->type}}</p>
+                                      <p class="task_desc_0">{{$denunciation->type}}</p>
                                     </td>
                                 </tr>
 
@@ -67,7 +67,7 @@
                                       {{-- <p class="project_name_0">General</p> --}}
                                     </td>
                                     <td>
-                                      <p class="task_desc_0"><span>{{$denunciation[0]->place}} | {{$denunciation[0]->date}}</span></p>
+                                      <p class="task_desc_0"><span>{{$denunciation->place}} | {{$denunciation->date}}</span></p>
                                     </td>
                                 </tr>
 
@@ -77,7 +77,7 @@
                                       {{-- <p class="project_name_0">General</p> --}}
                                     </td>
                                     <td>
-                                      <p class="task_desc_0" style="text-align: justify;">{{$denunciation[0]->description}}</p>
+                                      <p class="task_desc_0" style="text-align: justify;">{{$denunciation->description}}</p>
                                     </td>
                                 </tr>
 
@@ -86,23 +86,118 @@
                                       <h6 class="task_title_0">NIVEAU DE PRIORITE</h6>
                                     </td>
                                     <td>
-                                      <p class="task_desc_0" style="text-align: justify;">{{$denunciation[0]->level}}</p>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                      <h6 class="task_title_0">CODE DE LA DEMANDE</h6>
-                                      {{-- <p class="project_name_0">General</p> --}}
-                                    </td>
-                                    <td>
-                                      <p class="task_desc_0">{{ Auth::user()->generate_code}}</p>
+                                      <p class="task_desc_0" style="text-align: justify;">{{$denunciation->level}}</p>
                                     </td>
                                 </tr>
 
                               </table>
                             </div>
                           </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="fade tab-pane" id="personal" role="tabpanel" aria-labelledby="pills-todaytask-tab">
+                        <div class="card mb-0">
+                          <div class="card-header d-flex">
+                            <h6 class="mb-0">Infos personnelles</h6><a href="#"><i class="me-2" data-feather="printer"></i>Imprimer</a>
+                          </div>
+                          <div class="card-body">
+
+                            <div class="taskadd">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tr>
+                                            <td>
+                                                <h6 class="task_title_0">NOM</h6>
+                                            </td>
+                                            <td>
+                                                <p class="task_desc_0"> @if($denunciation->last_name == null ) AUCUN @else {{$denunciation->last_name}} @endif </p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h6 class="task_title_0">PRENOMS</h6>
+                                            </td>
+                                            <td>
+                                                <p class="task_desc_0">@if($denunciation->first_name == null ) AUCUN @else {{$denunciation->first_name}} @endif</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h6 class="task_title_0">EMAIL</h6>
+                                            </td>
+                                            <td>
+                                                <p class="task_desc_0">@if($denunciation->email == null ) AUCUN @else {{$denunciation->email}} @endif</p>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <h6 class="task_title_0">TELEPHONE</h6>
+                                            </td>
+                                            <td>
+                                                <p class="task_desc_0">@if($denunciation->phone == null ) AUCUN @else {{$denunciation->phone}} @endif</p>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <h6 class="task_title_0">LIEU DE RESIDENCE</h6>
+                                            </td>
+                                            <td>
+                                                <p class="task_desc_0">@if($denunciation->place_personal == null ) AUCUN @else {{$denunciation->place_personal}} @endif</p>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <h6 class="task_title_0">VEUT ETRE CITE OU PAS ?</h6>
+                                            </td>
+                                            <td>
+                                                <p class="task_desc_0">@if($denunciation->accord == 'non' ) NON @else OUI @endif</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="fade tab-pane" id="pills-todaytask" role="tabpanel" aria-labelledby="pills-todaytask-tab">
+                      <div class="card mb-0">
+                        <div class="card-header d-flex">
+                          <h6 class="mb-0">Rapports</h6><a href="#"><i class="me-2" data-feather="printer"></i>Imprimer</a>
+                        </div>
+                        <div class="card-body">
+
+                            @if($rapports->isEmpty())
+
+                                <div class="details-bookmark text-center">
+                                    <div class="row" id="favouriteData"></div>
+                                    <div class="no-favourite"><span>Vous n'aviez ajouté aucun rapport.</span></div>
+                                </div>
+                            @else
+                                <div class="taskadd">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            @foreach ($rapports as $rapport)
+                                            <tr>
+                                            <td>
+                                                <h6 class="task_title_0">{{ $rapport->title }}</h6>
+                                            </td>
+                                            <td>
+                                                <p class="task_desc_0">{{ $rapport->description }}</p>
+                                            </td>
+                                            </tr>
+                                            @endforeach
+                                        </table>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                       </div>
                     </div>
@@ -163,42 +258,6 @@
                         </div>
                     </div>
 
-
-                    <div class="fade tab-pane" id="pills-todaytask" role="tabpanel" aria-labelledby="pills-todaytask-tab">
-                      <div class="card mb-0">
-                        <div class="card-header d-flex">
-                          <h6 class="mb-0">Rapports</h6><a href="#"><i class="me-2" data-feather="printer"></i>Imprimer</a>
-                        </div>
-                        <div class="card-body">
-
-                            @if($rapports->isEmpty())
-
-                                <div class="details-bookmark text-center">
-                                    <div class="row" id="favouriteData"></div>
-                                    <div class="no-favourite"><span>Aucun rapport aujourd'hui.</span></div>
-                                </div>
-                            @else
-                                <div class="taskadd">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            @foreach ($rapports as $rapport)
-                                            <tr>
-                                            <td>
-                                                <h6 class="task_title_0">{{ $rapport->title }}</h6>
-                                            </td>
-                                            <td>
-                                                <p class="task_desc_0">{{ $rapport->description }}</p>
-                                            </td>
-                                            </tr>
-                                            @endforeach
-                                        </table>
-                                    </div>
-                                </div>
-                            @endif
-                        </div>
-                      </div>
-                    </div>
-
                     <div class="fade tab-pane" id="complement" role="tabpanel" aria-labelledby="pills-todaytask-tab">
                         <div class="card mb-0">
                           <div class="card-header d-flex">
@@ -251,21 +310,21 @@
                         <div class="media">
                           <div class="media-size-email"><img class="me-3 rounded-circle" width="35" height="35" src="{{ asset('assets/images/landing/profil.png')}}" alt=""></div>
                           <div class="media-body">
-                            <h6 class="f-w-600">ANONYME</h6>
+                            <h6 class="f-w-600">ADMINISTRATEUR</h6>
                             <p>#{{ Auth::user()->secret_code }}</p>
                           </div>
                         </div>
                         <ul class="nav main-menu" role="tablist">
                           <li class="nav-item" style="text-align: center;">
-                            <a href="{{route('denunciations.edit', ['denunciation' => $denunciation[0]->id ])}}" class="badge-light-primary btn-block btn-mail w-100"><span style="display: block; margin: auto;">PERSONNEL</span></a>
-                            <a class="badge-light-primary btn-block btn-mail w-100" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span style="display: block; margin: auto;">AJOUTER INFOS</span></a>
-                            <a class="badge-light-primary btn-block btn-mail w-100" type="button" data-bs-toggle="modal" data-bs-target="#cancel_denunciation"><span style="display: block; margin: auto;">ANNULER REQUETE</span></a>
+                            <a class="badge-light-primary btn-block btn-mail w-100" type="button" data-bs-toggle="modal" data-bs-target="#form_status"><span style="display: block; margin: auto;">EDITER STATUS</span></a>
+                            <a class="badge-light-primary btn-block btn-mail w-100" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span style="display: block; margin: auto;">AJOUTER RAPPORT</span></a>
                           </li>
                           <li class="nav-item"><span class="main-title"> Details</span></li>
                           <li><a id="pills-created-tab" data-bs-toggle="pill" href="#pills-created" role="tab" aria-controls="pills-created" aria-selected="true"><span class="title"> Denonciation</span></a></li>
-                          <li><a class="show" id="pills-todaytask-tab" data-bs-toggle="pill" href="#pills-todaytask" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title"> Rapports <label class="badge badge-light-primary">1</label></span></a></li>
-                          <li><a class="show" id="complement" data-bs-toggle="pill" href="#complement" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title"> Infos supplémentaires</span></a></li>
-                          <li><a class="show" id="proofs" data-bs-toggle="pill" href="#proofs" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title"> Preuves</span></a></li>
+                          <li><a class="show" id="personal" data-bs-toggle="pill" href="#personal" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title">Infos personnelles</span></a></li>
+                          <li><a class="show" id="pills-todaytask-tab" data-bs-toggle="pill" href="#pills-todaytask" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title"> Voir les rapports</span></a></li>
+                          <li><a class="show" id="complement" data-bs-toggle="pill" href="#complement" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title">   Ajouter infos <label class="badge badge-light-primary">1</label></span></a></li>
+                          <li><a class="show" id="proofs" data-bs-toggle="pill" href="#proofs" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title"> Voir les preuves <label class="badge badge-light-primary">1</label></span></a></li>
 
                         </ul>
                       </div>
@@ -284,47 +343,32 @@
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Informations complémentaires</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Ajouter un rapport</h5>
               <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="{{route('complements.store')}}" class="needs-validation" enctype="multipart/form-data" method="POST" class="form-bookmark needs-validation" id="bookmark-form" novalidate="">
+              <form action="{{route('rapports.store')}}" class="needs-validation" enctype="multipart/form-data" method="POST" class="form-bookmark needs-validation" id="bookmark-form" novalidate="">
                 @csrf
 
-                <input type="hidden" name="denunciation_id" value="{{ $denunciation[0]->id }}">
+                <input type="hidden" name="denunciation_id" value="{{ $denunciation->id }}">
 
                 <div class="row">
-
-                    <div class="mb-3 mt-0 col-md-12">
-                        <label for="task-title">Type d'ajout</label>
-                        <select class="js-example-basic-single" required="" name="type">
-                          <option value="proof">Preuves</option>
-                          <option value="description">Description</option>
-                        </select>
-                    </div>
 
                   <div class="mb-3 mt-0 col-md-12">
                     <label for="task-title">Titre</label>
                     <input class="form-control" id="task-title" required="" name="title" type="text" required="" autocomplete="off">
                   </div>
 
-                  <div class="mb-3 mt-0 col-md-12">
-                    <label for="task-title">Preuves</label>
-                    <input class="form-control" name="file_name" type="file" required="required" >
-                  </div>
-
-
-
 
                   <div class="mb-3 col-md-12 my-0">
-                    <label for="task-title">Decrivez ici</label>
-                    <textarea class="form-control" required="" name="content" required="" autocomplete="off">  </textarea>
+                    <label for="task-title">Description</label>
+                    <textarea class="form-control" required="" name="description" required="" autocomplete="off">  </textarea>
                   </div>
 
 
                 </div>
                 <input id="index_var" type="hidden" value="6">
-                <button class="btn btn-secondary" id="Bookmark" onclick="submitBookMark()" type="submit">Enregistrer</button>
+                <button class="btn btn-secondary" id="Bookmark" onclick="submitBookMark()" type="submit">Envoyer</button>
                 <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Annuler</button>
               </form>
             </div>
@@ -341,29 +385,51 @@
 
 
 
-      <div class="modal fade modal-bookmark" id="cancel_denunciation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="modal fade modal-bookmark" id="form_status" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Annuler ma dénonciation</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Editer le statut</h5>
               <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="{{route('cancel.denunciation')}}" class="needs-validation" enctype="multipart/form-data" method="POST" class="form-bookmark needs-validation" id="bookmark-form" novalidate="">
+              <form action="{{route('edit.status')}}" class="needs-validation" method="POST" class="form-bookmark needs-validation" id="bookmark-form" novalidate="">
                 @csrf
 
-                <input type="hidden" name="denunciation_id" value="{{ $denunciation[0]->id }}">
-                <div class="row">
+                <input type="hidden" name="denunciation_id" value="{{ $denunciation->id }}">
 
-                  <div class="mb-3 col-md-12 my-0">
-                    <label for="task-title">Donnez vos raisons</label>
-                    <textarea class="form-control" required="" name="observations" required="" autocomplete="off">  </textarea>
-                  </div>
-
-
+                <div class="mb-3 mt-0 col-md-12">
+                    <label for="task-title">Status</label>
+                    <select class="js-example-basic-single" required="" name="status">
+                      <option value="review">En révision</option>
+                      <option value="processing">En cours</option>
+                      <option value="solved">Résolu</option>
+                      <option value="closed">Annulé</option>
+                    </select>
+                </div>
+                <div class="mb-3 mt-0 col-md-12">
+                    <label for="task-title">Niveau de priorité</label>
+                    <select class="js-example-basic-single" required="" name="level">
+                      <option value="not-important">Pas très important</option>
+                      <option value="important">Imortant</option>
+                      <option value="very-important">Très important</option>
+                    </select>
                 </div>
 
-                <button class="btn btn-secondary" id="Bookmark" onclick="submitBookMark()" type="submit">Envoyer</button>
+                <button class="btn btn-secondary" id="Bookmark" onclick="submitBookMark()" type="submit">Enregistrer</button>
                 <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Annuler</button>
               </form>
             </div>

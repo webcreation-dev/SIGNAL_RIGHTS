@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DenunciationsController;
+use App\Http\Controllers\ComplementController;
+use App\Http\Controllers\RapportController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +40,13 @@ Route::middleware('auth')->group(function () {
         return view('admin-dashboard');
     });
 
+    Route::resource('rapports', RapportController::class);
+
+    Route::get('vos_denonciations', 'App\Http\Controllers\DenunciationsController@getAdminDashboard')->name('get.admin.dashboard');
+    Route::get('manager_denonciations', 'App\Http\Controllers\DenunciationsController@manageDenunciations')->name('manage.denunciations');
+    Route::get('denonciations/{status}', 'App\Http\Controllers\DenunciationsController@getDenunciationByStatus')->name('get.denunciation.by.status');
+    Route::post('editer_status', 'App\Http\Controllers\DenunciationsController@editStatus')->name('edit.status');
+
 });
 
 
@@ -51,6 +60,9 @@ Route::middleware('anonymous')->group(function () {
         return view('user-dashboard');
     });
     Route::resource('denunciations', DenunciationsController::class)->except(['create', 'store']);
+    Route::post('annuler_denonciation', 'App\Http\Controllers\DenunciationsController@cancelDenunciation')->name('cancel.denunciation');
+
+    Route::resource('complements', ComplementController::class);
 
 });
 

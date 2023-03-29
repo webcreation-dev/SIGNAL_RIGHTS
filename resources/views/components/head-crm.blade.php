@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/slick-theme.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/scrollbar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/animate.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/photoswipe.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css')}}">
 
     <!-- Plugins css Ends-->

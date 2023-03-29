@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('generate_code')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
+            $table->string('role')->default('user');
             $table->rememberToken();
             $table->timestamps();
         });

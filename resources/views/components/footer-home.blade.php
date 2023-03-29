@@ -54,6 +54,9 @@
 <script src="{{ asset('assets/js/select2/select2-custom.js')}}"></script>
 <script src="{{ asset('assets/js/form-validation-custom.js')}}"></script>
 
+<script src="{{ asset('assets/js/photoswipe/photoswipe.min.js')}}"></script>
+<script src="{{ asset('assets/js/photoswipe/photoswipe-ui-default.min.js')}}"></script>
+<script src="{{ asset('assets/js/photoswipe/photoswipe.js')}}"></script>
 
 <!-- Plugin used-->
 <script>new WOW().init();</script>

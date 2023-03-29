@@ -25,13 +25,31 @@
                     </li>
                     <li class="sidebar-main-title">
                         <div>
-                            <h6>DENONCIATIONS</h6>
+                            <h6>TABLEAU DE BORD</h6>
                         </div>
 
                     </li>
 
+                    {{-- @can('user') --}}
                     <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                        <label class="badge badge-light-primary">1</label><a class="sidebar-link sidebar-title"
+                        <a class="sidebar-link sidebar-title"
+                            href="#">
+                            <svg class="stroke-icon">
+                                <use href="{{ asset('assets/svg/icon-sprite.svg')}}#stroke-home"></use>
+                            </svg>
+                            <svg class="fill-icon">
+                                <use href="{{ asset('assets/svg/icon-sprite.svg')}}#fill-home"></use>
+                            </svg><span>Denociation </span></a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="{{route('denunciations.index')}}">Voir<label class="badge badge-light-primary">1</label></a></li>
+                        </ul>
+
+                    </li>
+                    {{-- @endcan --}}
+
+                    {{-- @can('admin') --}}
+                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                        <a class="sidebar-link sidebar-title"
                             href="#">
                             <svg class="stroke-icon">
                                 <use href="{{ asset('assets/svg/icon-sprite.svg')}}#stroke-home"></use>
@@ -40,13 +58,13 @@
                                 <use href="{{ asset('assets/svg/icon-sprite.svg')}}#fill-home"></use>
                             </svg><span>Administrateur </span></a>
                         <ul class="sidebar-submenu">
-                            <li><a href="{{route('denunciations.index')}}">Voir les denonciations</a></li>
-                            <li><a class="lan-5" href="dashboard-02.html">Ecommerce</a></li>
-                            {{-- <li><a href="dashboard-03.html">Online course</a></li>
-                            <li><a href="dashboard-04.html">Crypto</a></li>
-                            <li><a href="dashboard-05.html">Social</a></li> --}}
+                            <li><a href="{{route('get.admin.dashboard')}}">Voir tout<label class="badge badge-light-primary">1</label></a></li>
+                            <li><a href="{{route('get.denunciation.by.status', ['status' => 'sent' ])}}">En attente<label class="badge badge-light-primary">{{ App\Models\Denunciations::getNumberDenunciations('sent')}}</label></a></li>
+                            <li><a href="{{route('get.denunciation.by.status', ['status' => 'viewed' ])}}">Non lu<label class="badge badge-light-primary">{{ App\Models\Denunciations::getNumberDenunciations('viewed')}}</label></a></li>
                         </ul>
                     </li>
+
+                    {{-- @endcan --}}
                 </ul>
             </div>
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

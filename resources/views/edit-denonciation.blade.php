@@ -6,7 +6,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-6">
-                    <h3>Modification</h3>
+                    <h3>INFORMATIONS PERSONNELLES</h3>
                 </div>
                 <div class="col-6">
                     <ol class="breadcrumb">
@@ -15,7 +15,7 @@
                                     <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
                                 </svg></a></li>
                         <li class="breadcrumb-item">Accueil</li>
-                        <li class="breadcrumb-item active"> Modification</li>
+                        <li class="breadcrumb-item active"> Informations personelles</li>
                     </ol>
                 </div>
             </div>
@@ -27,24 +27,21 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Modifier votre dénonciation</h5>
+                        <h5>Ajouter vos informations personelles </h5>
                         <br>
-                        <p style="text-align: justify; ">Votre signalement nous permet d'agir pour défendre les droits humains et lutter contre l'impunité. Toutes les informations que vous fournissez resteront confidentielles.</p>
+                        <p style="text-align: justify; ">Enregistrer vos informations personnelles pour nous permettre de faire
+                            un suivi correct de votre denonciation. Vos données sont en sécurité et ne sont vus que par les membres de notre administration.</p>
                     </div>
                     <div class="card-body">
                         <div class="stepwizard">
                             <div class="stepwizard-row setup-panel">
                                 <div class="stepwizard-step"><a class="btn btn-primary"
                                         href="#step-1">1</a>
-                                    <p>Informations générales</p>
+                                    <p>Nomination</p>
                                 </div>
                                 <div class="stepwizard-step"><a class="btn btn-light"
                                         href="#step-2">2</a>
-                                    <p>Détails de l'incident</p>
-                                </div>
-                                <div class="stepwizard-step"><a class="btn btn-light"
-                                        href="#step-3">3</a>
-                                    <p>Confidentialité et preuves</p>
+                                    <p>Contact</p>
                                 </div>
 
                             </div>
@@ -58,37 +55,25 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="mb-3">
-                                            <label class="form-label pull-left">Titre de la
-                                                dénonciation</label>
-                                            <input class="form-control" name="title"
-                                                id="exampleFormControlInput1" type="text" required="required" value="{{ $denunciation[0]->title }}"
-                                                placeholder="Maltraitance des enfants">
+                                            <label class="form-label pull-left">Nom</label>
+                                            <input class="form-control" name="last_name"
+                                                id="exampleFormControlInput1" type="text" value="{{ $denunciation[0]->last_name }}"
+                                                placeholder="YESSIN">
                                                 <div class="valid-feedback pull-left">Validé !</div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
+
                                     <div class="col">
-                                        <div>
-                                            <label class="form-label pull-left"
-                                                for="exampleFormControlTextarea4">Type de
-                                                dénonciation</label>
-                                            <select name="type" class="js-example-basic-single  col-sm-12" value="{{ $denunciation[0]->type }}"
-                                             required="required">
-                                                {{-- <option value="" selected disabled>Sélectionnez un type de dénonciation</option> --}}
-                                                <optgroup label="Developer">
-                                                    <option value="AL">Alabama</option>
-                                                    <option value="WY">Wyoming</option>
-                                                </optgroup>
-                                                <optgroup label="Designer">
-                                                    <option value="WY">Peter</option>
-                                                    <option value="WY">Hanry Die</option>
-                                                    <option value="WY">John Doe</option>
-                                                </optgroup>
-                                            </select>
+                                        <div class="mb-3">
+                                            <label class="form-label pull-left">Prenom</label>
+                                            <input class="form-control" name="first_name"
+                                                id="exampleFormControlInput1" type="text" value="{{ $denunciation[0]->first_name }}"
+                                                placeholder="Géraud">
+                                                <div class="valid-feedback pull-left">Validé !</div>
                                         </div>
-                                        <div class="valid-feedback pull-left">Validé !</div>
                                     </div>
                                 </div>
 
@@ -101,74 +86,49 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="mb-3">
-                                            <label class="form-label pull-left"
-                                                for="exampleFormControlTextarea4">Lieu de l'incident</label>
-                                            <input class="form-control" id="validationDefault03" required="required" value="{{ $denunciation[0]->place }}"
-                                                type="text" name="place" placeholder="Parakou">
+                                            <label class="form-label pull-left">Email</label>
+                                            <input class="form-control" name="email"
+                                                id="exampleFormControlInput1" type="email"  value="{{ $denunciation[0]->email }}"
+                                                placeholder="geraudyessin@gmail.com">
                                                 <div class="valid-feedback pull-left">Validé !</div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="mb-3">
-                                            <div class="mb-3">
-                                                <label class="form-label pull-left" for="exampleFormControlTextarea4">Date</label>
-                                                <input required class="form-control digits" name="date" type="date" value="{{ $denunciation[0]->date }}" value="2018-01-01">
-                                                <div class="valid-feedback pull-left">Validé !</div>
-                                            </div>
                                         </div>
                                     </div>
 
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label class="form-label pull-left">Telephone</label>
+                                            <input class="form-control" name="phone"
+                                                id="exampleFormControlInput1" type="text"  value="{{ $denunciation[0]->phone }}"
+                                                placeholder="+229 96 15 47 85">
+                                                <div class="valid-feedback pull-left">Validé !</div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col">
                                         <div class="mb-3">
-                                            <label class="form-label pull-left"
-                                                for="exampleFormControlTextarea4">Description de l'incident</label>
-                                            <textarea class="form-control" name="description" required
-                                                id="exampleFormControlTextarea4" value="{{ $denunciation[0]->description }}"
-                                                rows="3"></textarea>
+                                            <label class="form-label pull-left">Lieu de rédidence</label>
+                                            <input class="form-control" name="place_personal"
+                                                id="exampleFormControlInput1" type="text"  value="{{ $denunciation[0]->place_personal }}"
+                                                placeholder="Benin Cotonou Qtier Houeyho">
                                                 <div class="valid-feedback pull-left">Validé !</div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <button class="btn btn-primary nextBtn pull-right"
-                                    type="button">Suivant</button>
-                            </div>
+                                <div class="mb-3 mt-0 col-md-12">
+                                    <div class="d-flex date-details">
 
-                            <div class="setup-content" id="step-3">
-
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="mb-3">
-                                            <label class="form-label pull-left"
-                                                for="exampleFormControlTextarea4">Code secret de suivi
-                                                </label>
-                                            <div class="input-group"><span class="input-group-text"
-                                                    id="inputGroupPrepend2">@</span>
-                                                <input class="form-control" name="secret_code"
-                                                    id="validationDefaultUsername" type="text"
-                                                    placeholder="56892" required="required"
-                                                    aria-describedby="inputGroupPrepend2" value="{{ $denunciation[0]->secret_code }}"
-                                                    >
-                                                    <div class="valid-feedback pull-left">Validé !</div>
-                                            </div>
-                                        </div>
+                                      <div class="d-inline-block">
+                                          <input class="checkbox_animated" name="accord" id="chk-ani" type="checkbox">Je souhaite etre cité
+                                      </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="mb-3">
-                                            <label class="form-label pull-left"
-                                                for="exampleFormControlTextarea4">Preuves de l'incident
-                                                </label>
-                                            <input class="form-control" name="file_name" type="file" >
-                                            <div class="valid-feedback pull-left">Validé !</div>
-                                        </div>
-                                    </div>
-                                </div>
+                                  </div>
 
-                                <button class="btn btn-success pull-right"
-                                    type="submit">Terminé!</button>
+
+                                <button class="btn btn-success nextBtn pull-right"
+                                    type="submit">Terminé</button>
                             </div>
 
                         </form>

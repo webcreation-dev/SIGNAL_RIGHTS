@@ -24,6 +24,18 @@ return new class extends Migration
             $table->text('description');
             $table->string('secret_code');
             $table->string('file_name');
+            $table->string('status')->default('sent');
+            $table->string('level')->nullable();
+            $table->string('notif_status')->default('none');
+
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('place_personal')->nullable();
+            $table->string('accord')->default('non');
+            $table->string('observations')->default('AUCUNE');
+
             $table->timestamps();
         });
     }

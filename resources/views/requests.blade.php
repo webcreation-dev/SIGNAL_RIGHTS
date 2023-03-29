@@ -178,7 +178,6 @@
                                                                     dénonciation</label>
                                                                 <select name="type" class="js-example-basic-single  col-sm-12"
                                                                  required="required">
-                                                                    {{-- <option value="" selected disabled>Sélectionnez un type de dénonciation</option> --}}
                                                                     <optgroup label="Developer">
                                                                         <option value="AL">Alabama</option>
                                                                         <option value="WY">Wyoming</option>
@@ -267,6 +266,24 @@
                                                                 <div class="valid-feedback pull-left">Validé !</div>
                                                             </div>
                                                         </div>
+
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div>
+                                                                    <label class="form-label pull-left"
+                                                                        for="exampleFormControlTextarea4">Niveau de priorité</label>
+                                                                    <select name="level" class="js-example-basic-single  col-sm-12"
+                                                                     required="required">
+                                                                     <option value="not-important">Pas très important</option>
+                                                                     <option value="important">Imortant</option>
+                                                                     <option value="very-important">Très important</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="valid-feedback pull-left">Validé !</div>
+                                                            </div>
+                                                            <div class="col"></div>
+                                                        </div>
+
                                                     </div>
 
                                                     <button class="btn btn-success pull-right"
