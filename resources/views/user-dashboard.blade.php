@@ -35,7 +35,7 @@
                     <div class="tab-pane fade active show" id="pills-created" role="tabpanel" aria-labelledby="pills-created-tab">
                       <div class="card mb-0">
                         <div class="card-header d-flex">
-                          <h5 class="mb-0">Votre dénonciation</h5><a href="#"><i class="me-2" data-feather="printer"></i>Modifier</a>
+                          <h5 class="mb-0">Votre dénonciation</h5><a href="#"><i class="me-2" data-feather="printer"></i><span class="badge badge-success">En attente</span></a>
                         </div>
                         <div class="card-body p-0">
                           <div class="taskadd">
@@ -43,48 +43,54 @@
                               <table class="table">
                                 <tr>
                                   <td>
-                                    <h6 class="task_title_0">Client meeting</h6>
-                                    <p class="project_name_0">General</p>
+                                    <h6 class="task_title_0">TITRE</h6>
+                                    {{-- <p class="project_name_0">General</p> --}}
                                   </td>
                                   <td>
-                                    <p class="task_desc_0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                                    <p class="task_desc_0">{{$denunciation[0]->title}}</p>
                                   </td>
-                                  <td><a class="me-2" href="#"><i data-feather="link"></i></a><a href="#"><i data-feather="more-horizontal"></i></a></td>
-                                  <td><a href="#"><i data-feather="trash-2"></i></a></td>
                                 </tr>
+
                                 <tr>
-                                  <td>
-                                    <h6 class="task_title_0">Plan webinar</h6>
-                                    <p class="project_name_0">General</p>
-                                  </td>
-                                  <td>
-                                    <p class="task_desc_0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                                  </td>
-                                  <td><a class="me-2" href="#"><i data-feather="link"></i></a><a href="#"><i data-feather="more-horizontal"></i></a></td>
-                                  <td><a href="#"><i data-feather="trash-2"></i></a></td>
+                                    <td>
+                                      <h6 class="task_title_0">CATEGORIE</h6>
+                                      {{-- <p class="project_name_0">General</p> --}}
+                                    </td>
+                                    <td>
+                                      <p class="task_desc_0">{{$denunciation[0]->type}}</p>
+                                    </td>
                                 </tr>
+
                                 <tr>
-                                  <td>
-                                    <h6 class="task_title_0">Email newsletter</h6>
-                                    <p class="project_name_0">General</p>
-                                  </td>
-                                  <td>
-                                    <p class="task_desc_0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                                  </td>
-                                  <td><a class="me-2" href="#"><i data-feather="link"></i></a><a href="#"><i data-feather="more-horizontal"></i></a></td>
-                                  <td><a href="#"><i data-feather="trash-2"></i></a></td>
+                                    <td>
+                                      <h6 class="task_title_0">LIEU & DATE</h6>
+                                      {{-- <p class="project_name_0">General</p> --}}
+                                    </td>
+                                    <td>
+                                      <p class="task_desc_0"><span>{{$denunciation[0]->place}} | {{$denunciation[0]->date}}</span></p>
+                                    </td>
                                 </tr>
+
                                 <tr>
-                                  <td>
-                                    <h6 class="task_title_0">Publish podcast</h6>
-                                    <p class="project_name_0">General</p>
-                                  </td>
-                                  <td>
-                                    <p class="task_desc_0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                                  </td>
-                                  <td><a class="me-2" href="#"><i data-feather="link"></i></a><a href="#"><i data-feather="more-horizontal"></i></a></td>
-                                  <td><a href="#"><i data-feather="trash-2"></i></a></td>
+                                    <td>
+                                      <h6 class="task_title_0">DESCRIPTION</h6>
+                                      {{-- <p class="project_name_0">General</p> --}}
+                                    </td>
+                                    <td>
+                                      <p class="task_desc_0" style="text-align: justify;">{{$denunciation[0]->description}}</p>
+                                    </td>
                                 </tr>
+
+                                <tr>
+                                    <td>
+                                      <h6 class="task_title_0">CODE DE LA DEMANDE</h6>
+                                      {{-- <p class="project_name_0">General</p> --}}
+                                    </td>
+                                    <td>
+                                      <p class="task_desc_0">{{ Auth::user()->generate_code}}</p>
+                                    </td>
+                                </tr>
+
                               </table>
                             </div>
                           </div>
@@ -95,7 +101,7 @@
                     <div class="fade tab-pane" id="pills-todaytask" role="tabpanel" aria-labelledby="pills-todaytask-tab">
                       <div class="card mb-0">
                         <div class="card-header d-flex">
-                          <h6 class="mb-0">Rapports</h6><a href="#"><i class="me-2" data-feather="printer"></i>Print</a>
+                          <h6 class="mb-0">Rapports</h6><a href="#"><i class="me-2" data-feather="printer"></i>Imprimer</a>
                         </div>
                         <div class="card-body">
                           <div class="details-bookmark text-center">
@@ -105,252 +111,6 @@
                         </div>
                       </div>
                     </div>
-
-
-                    {{-- <div class="fade tab-pane" id="pills-delayed" role="tabpanel" aria-labelledby="pills-delayed-tab">
-                      <div class="card mb-0">
-                        <div class="card-header d-flex">
-                          <h6 class="mb-0">Delayed Tasks</h6><a href="#"><i class="me-2" data-feather="printer"></i>Print</a>
-                        </div>
-                        <div class="card-body">
-                          <div class="details-bookmark text-center"><span>No tasks found.</span></div>
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <div class="fade tab-pane" id="pills-upcoming" role="tabpanel" aria-labelledby="pills-upcoming-tab">
-                      <div class="card mb-0">
-                        <div class="card-header d-flex">
-                          <h6 class="mb-0">Upcoming Tasks</h6><a href="#"><i class="me-2" data-feather="printer"></i>Print</a>
-                        </div>
-                        <div class="card-body">
-                          <div class="details-bookmark text-center"><span>No tasks found.</span></div>
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <div class="fade tab-pane" id="pills-weekly" role="tabpanel" aria-labelledby="pills-weekly-tab">
-                      <div class="card mb-0">
-                        <div class="card-header d-flex">
-                          <h6 class="mb-0">This Week Tasks</h6><a href="#"><i class="me-2" data-feather="printer"></i>Print</a>
-                        </div>
-                        <div class="card-body">
-                          <div class="details-bookmark text-center"><span>No tasks found.</span></div>
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <div class="fade tab-pane" id="pills-monthly" role="tabpanel" aria-labelledby="pills-monthly-tab">
-                      <div class="card mb-0">
-                        <div class="card-header d-flex">
-                          <h6 class="mb-0">This Month Tasks</h6><a href="#"><i class="me-2" data-feather="printer"></i>Print</a>
-                        </div>
-                        <div class="card-body">
-                          <div class="details-bookmark text-center"><span>No tasks found.</span></div>
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <div class="fade tab-pane" id="pills-assigned" role="tabpanel" aria-labelledby="pills-assigned-tab">
-                      <div class="card mb-0">
-                        <div class="card-header d-flex">
-                          <h6 class="mb-0">Assigned to me</h6><a href="#"><i class="me-2" data-feather="printer"></i>Print</a>
-                        </div>
-                        <div class="card-body p-0">
-                          <div class="taskadd">
-                            <div class="table-responsive">
-                              <table class="table">
-                                <tr>
-                                  <td>
-                                    <h6 class="task_title_0">Task name</h6>
-                                    <p class="project_name_0">General</p>
-                                  </td>
-                                  <td>
-                                    <p class="task_desc_0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                                  </td>
-                                  <td><a class="me-2" href="#"><i data-feather="link"></i></a><a href="#"><i data-feather="more-horizontal"></i></a></td>
-                                  <td><a href="#"><i data-feather="trash-2"></i></a></td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <h6 class="task_title_0">Task name</h6>
-                                    <p class="project_name_0">General</p>
-                                  </td>
-                                  <td>
-                                    <p class="task_desc_0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                                  </td>
-                                  <td><a class="me-2" href="#"><i data-feather="link"></i></a><a href="#"><i data-feather="more-horizontal"></i></a></td>
-                                  <td><a href="#"><i data-feather="trash-2"></i></a></td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <h6 class="task_title_0">Task name</h6>
-                                    <p class="project_name_0">General</p>
-                                  </td>
-                                  <td>
-                                    <p class="task_desc_0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                                  </td>
-                                  <td><a class="me-2" href="#"><i data-feather="link"></i></a><a href="#"><i data-feather="more-horizontal"></i></a></td>
-                                  <td><a href="#"><i data-feather="trash-2"></i></a></td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <h6 class="task_title_0">Task name</h6>
-                                    <p class="project_name_0">General</p>
-                                  </td>
-                                  <td>
-                                    <p class="task_desc_0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                                  </td>
-                                  <td><a class="me-2" href="#"><i data-feather="link"></i></a><a href="#"><i data-feather="more-horizontal"></i></a></td>
-                                  <td><a href="#"><i data-feather="trash-2"></i></a></td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <h6 class="task_title_0">Task name</h6>
-                                    <p class="project_name_0">General</p>
-                                  </td>
-                                  <td>
-                                    <p class="task_desc_0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                                  </td>
-                                  <td><a class="me-2" href="#"><i data-feather="link"></i></a><a href="#"><i data-feather="more-horizontal"></i></a></td>
-                                  <td><a href="#"><i data-feather="trash-2"></i></a></td>
-                                </tr>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <div class="fade tab-pane" id="pills-tasks" role="tabpanel" aria-labelledby="pills-tasks-tab">
-                      <div class="card mb-0">
-                        <div class="card-header d-flex">
-                          <h6 class="mb-0">My tasks</h6><a href="#"><i class="me-2" data-feather="printer"></i>Print</a>
-                        </div>
-                        <div class="card-body p-0">
-                          <div class="taskadd">
-                            <div class="table-responsive">
-                              <table class="table">
-                                <tr>
-                                  <td>
-                                    <h6 class="task_title_0">Task name</h6>
-                                    <p class="project_name_0">General</p>
-                                  </td>
-                                  <td>
-                                    <p class="task_desc_0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                                  </td>
-                                  <td><a class="me-2" href="#"><i data-feather="link"></i></a><a href="#"><i data-feather="more-horizontal"></i></a></td>
-                                  <td><a href="#"><i data-feather="trash-2"></i></a></td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <h6 class="task_title_0">Task name</h6>
-                                    <p class="project_name_0">General</p>
-                                  </td>
-                                  <td>
-                                    <p class="task_desc_0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                                  </td>
-                                  <td><a class="me-2" href="#"><i data-feather="link"></i></a><a href="#"><i data-feather="more-horizontal"></i></a></td>
-                                  <td><a href="#"><i data-feather="trash-2"></i></a></td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <h6 class="task_title_0">Task name</h6>
-                                    <p class="project_name_0">General</p>
-                                  </td>
-                                  <td>
-                                    <p class="task_desc_0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                                  </td>
-                                  <td><a class="me-2" href="#"><i data-feather="link"></i></a><a href="#"><i data-feather="more-horizontal"></i></a></td>
-                                  <td><a href="#"><i data-feather="trash-2"></i></a></td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <h6 class="task_title_0">Task name</h6>
-                                    <p class="project_name_0">General</p>
-                                  </td>
-                                  <td>
-                                    <p class="task_desc_0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                                  </td>
-                                  <td><a class="me-2" href="#"><i data-feather="link"></i></a><a href="#"><i data-feather="more-horizontal"></i></a></td>
-                                  <td><a href="#"><i data-feather="trash-2"></i></a></td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <h6 class="task_title_0">Task name</h6>
-                                    <p class="project_name_0">General</p>
-                                  </td>
-                                  <td>
-                                    <p class="task_desc_0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                                  </td>
-                                  <td><a class="me-2" href="#"><i data-feather="link"></i></a><a href="#"><i data-feather="more-horizontal"></i></a></td>
-                                  <td><a href="#"><i data-feather="trash-2"></i></a></td>
-                                </tr>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <div class="fade tab-pane" id="pills-notification" role="tabpanel" aria-labelledby="pills-notification-tab">
-                      <div class="card mb-0">
-                        <div class="card-header d-flex">
-                          <h6 class="mb-0">Notification</h6><a href="#"><i class="me-2" data-feather="printer"></i>Print</a>
-                        </div>
-                        <div class="card-body">
-                          <div class="details-bookmark text-center"><span>No tasks found.</span></div>
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <div class="fade tab-pane" id="pills-newsletter" role="tabpanel" aria-labelledby="pills-newsletter-tab">
-                      <div class="card mb-0">
-                        <div class="card-header d-flex">
-                          <h6 class="mb-0">Newsletter</h6><a href="#"><i class="me-2" data-feather="printer"></i>Print</a>
-                        </div>
-                        <div class="card-body">
-                          <div class="details-bookmark text-center"><span>No tasks found.</span></div>
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <div class="modal fade modal-bookmark" id="createtag" tabindex="-1" role="dialog" aria-hidden="true">
-                      <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title">Create Tag</h5>
-                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <form class="form-bookmark needs-validation" novalidate="">
-                              <div class="row">
-                                <div class="mb-3 mt-0 col-md-12">
-                                  <label>Tag Name</label>
-                                  <input class="form-control" type="text" required="" autocomplete="off">
-                                </div>
-                                <div class="mt-0 col-md-12">
-                                  <label>Tag color</label>
-                                  <input class="form-color d-block" type="color" value="#563d7c">
-                                </div>
-                              </div>
-                              <button class="btn btn-secondary" type="button">Save</button>
-                              <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Cancel</button>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div> --}}
-
-
                   </div>
                 </div>
               </div>
@@ -371,18 +131,13 @@
                           </div>
                         </div>
                         <ul class="nav main-menu" role="tablist">
-                          <li class="nav-item">
-                            <button class="badge-light-primary btn-block btn-mail w-100" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="me-2" data-feather="check-circle"></i> New Task</button>
+                          <li class="nav-item" style="text-align: center;">
+                            <a href="{{route('denunciations.edit', ['denunciation' => $denunciation[0]->id ])}}" class="badge-light-primary btn-block btn-mail w-100"><span style="display: block; margin: auto;">MODIFIER</span></a>
+                            <a class="badge-light-primary btn-block btn-mail w-100" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span style="display: block; margin: auto;">ANNULER</span></a>
                           </li>
                           <li class="nav-item"><span class="main-title"> Details</span></li>
                           <li><a id="pills-created-tab" data-bs-toggle="pill" href="#pills-created" role="tab" aria-controls="pills-created" aria-selected="true"><span class="title"> Denonciation</span></a></li>
                           <li><a class="show" id="pills-todaytask-tab" data-bs-toggle="pill" href="#pills-todaytask" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title"> Rapports</span></a></li>
-                          {{-- <li><a class="show" id="pills-delayed-tab" data-bs-toggle="pill" href="#pills-delayed" role="tab" aria-controls="pills-delayed" aria-selected="false"><span class="title"> Delayed Tasks</span></a></li>
-                          <li><a class="show" id="pills-upcoming-tab" data-bs-toggle="pill" href="#pills-upcoming" role="tab" aria-controls="pills-upcoming" aria-selected="false"><span class="title">Upcoming Tasks</span></a></li>
-                          <li><a class="show" id="pills-weekly-tab" data-bs-toggle="pill" href="#pills-weekly" role="tab" aria-controls="pills-weekly" aria-selected="false"><span class="title">This week tasks</span></a></li>
-                          <li><a class="show" id="pills-monthly-tab" data-bs-toggle="pill" href="#pills-monthly" role="tab" aria-controls="pills-monthly" aria-selected="false"><span class="title">This month tasks</span></a></li>
-                          <li><a class="show" id="pills-assigned-tab" data-bs-toggle="pill" href="#pills-assigned" role="tab" aria-controls="pills-assigned" aria-selected="false"><span class="title">Assigned to me</span></a></li>
-                          <li><a class="show" id="pills-tasks-tab" data-bs-toggle="pill" href="#pills-tasks" role="tab" aria-controls="pills-tasks" aria-selected="false"><span class="title">My tasks</span></a></li> --}}
 
                         </ul>
                       </div>

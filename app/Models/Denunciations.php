@@ -19,4 +19,10 @@ class Denunciations extends Model
         'secret_code',
         'file_name',
     ];
+
+    public function scopeByUser($query, $user_id)
+    {
+        return $query->where('user_id', $user_id);
+    }
+
 }

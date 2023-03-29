@@ -41,7 +41,7 @@
                                     <li class="nav-item"><a class="nav-link" href="#layout">ACCUEIL</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#frameworks">RENSEIGNEMENTS</a></li>
                                     <li class="nav-item"><a class="nav-link" href="{{route('denunciations.create')}}">DENONCER</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{route('get.anonymous.login')}}">SUIVRE MA DEMANDE</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{route('denunciations.index')}}">SUIVRE MA DEMANDE</a></li>
                                     {{-- <li class="nav-item"><a class="nav-link" href="#documentation">Documentation</a> --}}
                                     </li>
                                     <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>

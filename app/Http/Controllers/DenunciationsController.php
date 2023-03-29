@@ -17,8 +17,8 @@ class DenunciationsController extends Controller
      */
     public function index()
     {
-        $denunciations = Denunciations::all();
-        return view('admin-dashboard', compact('denunciations'));
+        $denunciation = Denunciations::byUser(Auth::user()->id)->get();
+        return view('user-dashboard', compact('denunciation'));
     }
 
     /**
@@ -34,6 +34,7 @@ class DenunciationsController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $user = User::create([
             'secret_code' => $request->secret_code,
             'generate_code' => rand(10000, 99999),
@@ -65,7 +66,8 @@ class DenunciationsController extends Controller
      */
     public function edit(Denunciations $denunciations)
     {
-        //
+        $denunciation = $denunciations->get();
+        return view('edit-denonciation', compact('denunciation'));
     }
 
     /**
@@ -73,7 +75,15 @@ class DenunciationsController extends Controller
      */
     public function update(Request $request, Denunciations $denunciations)
     {
-        //
+        $data = $request->all();
+
+        dd($data);
+        $path = $request->file('file_name')->store('uploads', 'public');
+        $data['file_name'] = $path;
+
+        $denunciation = $denunciations->update($data);
+
+        return view('user-dashboard', compact('denunciation'));
     }
 
     /**

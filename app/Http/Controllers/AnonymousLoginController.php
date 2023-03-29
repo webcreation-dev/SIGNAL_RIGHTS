@@ -26,7 +26,7 @@ class AnonymousLoginController extends Controller
         Auth::login($user);
 
         // Redirection de l'utilisateur
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect(route('denunciations.index'));
     }
 
     public function getLoginForm()
