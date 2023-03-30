@@ -39,7 +39,7 @@ Chart.defaults.global = {
     onAnimationComplete: function() {}
 };
 var barData = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet"],
     datasets: [{
         label: "My First dataset",
         fillColor: "rgba(115, 102 ,255, 0.4)",
@@ -117,7 +117,7 @@ var polarOptions = {
 var polarCtx = document.getElementById("myPolarGraph").getContext("2d");
 var myPolarChart = new Chart(polarCtx).PolarArea(polarData, polarOptions);
 var lineGraphData = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet"],
     datasets: [{
         label: "My First dataset",
         fillColor: "rgba(115, 102 ,255, 0.3)",

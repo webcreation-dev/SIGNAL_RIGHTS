@@ -26,12 +26,12 @@
 
                     <div class="form-group">
                         <label class="col-form-label">Code demande</label>
-                        <input name="generate_code" class="form-control" type="text" required="" placeholder="854692">
+                        <input name="generate_code" class="form-control" type="password" required="" placeholder="854692">
                     </div>
 
                   <div class="form-group mb-0">
 
-                    <button class="btn btn-primary btn-block w-100" type="submit">Sign in</button>
+                    <button class="btn btn-primary btn-block w-100" type="submit">Connecter</button>
                   </div>
                   </form>
               </div>

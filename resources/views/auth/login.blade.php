@@ -18,14 +18,14 @@
 
                 <div class="form-group">
                   <label class="col-form-label">Adresse email</label>
-                  <input class="form-control" name="email" type="email" required="" placeholder="amnesty@gmail.com">
+                  <input class="form-control" name="email" type="email" value="adjilan2403@gmail.com"  required="" placeholder="amnesty@gmail.com">
                   <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 <div class="form-group">
                   <label class="col-form-label">Mot de passe</label>
                   <div class="form-input position-relative">
-                    <input class="form-control" type="password" name="password" required="" placeholder="*********">
+                    <input class="form-control" type="password" name="password" value="password"  required="" placeholder="*********">
                     <div class="show-hide"><span class="show">                         </span></div>
                   </div>
                   <x-input-error :messages="$errors->get('password')" class="mt-2" />

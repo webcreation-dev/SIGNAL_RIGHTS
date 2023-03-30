@@ -27,6 +27,9 @@ class Denunciations extends Model
         'first_name',
         'last_name',
         'accord',
+        'observations',
+        'person_type',
+        'sexe',
     ];
 
     public function scopeByUser($query, $user_id)
@@ -63,7 +66,59 @@ class Denunciations extends Model
             case 'cancel':
                 return 'ANNULE';
             default:
+                return 'EN REVISION';
+        }
+    }
+
+    public static function getNameLevel($level) {
+        switch ($level) {
+            case 'important':
+                return 'IMPORTANT';
+            case 'not-important':
+                return 'PAS TRES IMPORTANT';
+            case 'very-':
+                return 'TRES IMPORTANT';
+            default:
+                return 'IMPORTANT';
+        }
+    }
+
+    public static function getColorStatus($status) {
+        switch ($status) {
+            case 'sent':
+                return 'btn-info';
+            case 'viewed':
+                return 'btn-primary';
+            case 'seen':
+                return 'btn-success';
+            case 'review':
+                return 'btn-info';
+            case 'processing':
+                return 'btn-warning';
+            case 'solved':
+                return 'btn-success';
+            case 'closed':
+                return 'btn-secondary';
+            case 'cancel':
+                return 'btn-danger';
+
+            default:
                 return 'EN ATTENTE';
         }
     }
+
+    public static function getColorLevel($level) {
+        switch ($level) {
+            case 'important':
+                return 'btn-primary';
+            case 'not-important':
+                return 'btn-success';
+            case 'very-':
+                return 'btn-secondary';
+            default:
+                return 'btn-primary';
+        }
+    }
+
+
 }

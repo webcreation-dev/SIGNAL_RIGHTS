@@ -38,17 +38,20 @@
                                 aria-label="Toggle navigation"><span></span><span></span><span></span></button>
                             <div class="navbar-collapse justify-content-center collapse hidenav" id="navbarDefault">
                                 <ul class="navbar-nav navbar_nav_modify" id="scroll-spy">
-                                    <li class="nav-item"><a class="nav-link" href="#layout">ACCUEIL</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#frameworks">RENSEIGNEMENTS</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{route('denunciations.create')}}">DENONCER</a></li>
+
+
+                                    <li class="nav-item"><a class="nav-link" href="http://localhost/SIGNAL_RIGHTS/public/#home">ACCUEIL</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="http://localhost/SIGNAL_RIGHTS/public/#about-us">A PROPOS DE NOUS</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="http://localhost/SIGNAL_RIGHTS/public/#demo">DEMO</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="http://localhost/SIGNAL_RIGHTS/public/#renseignements">RENSEIGNEMENTS</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#denoncer">DENONCER</a></li>
                                     <li class="nav-item"><a class="nav-link" href="{{route('denunciations.index')}}">SUIVRE MA DEMANDE</a></li>
-                                    {{-- <li class="nav-item"><a class="nav-link" href="#documentation">Documentation</a> --}}
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="http://localhost/SIGNAL_RIGHTS/public/#faq">FAQ</a></li>
                                 </ul>
                             </div>
                             <div class="buy-btn rounded-pill"><a class="nav-link js-scroll"
-                                  href="https://1.envato.market/3GVzd" target="_blank">CONNEXION</a></div>
+                                  href="{{route('login')}}">CONNEXION</a></div>
                         </nav>
                     </header>
                 </div>
@@ -114,7 +117,7 @@
                                 <div class="customer-wrapper">
                                     <div class="customer-box"> <img
                                             src="{{ asset('assets/images/landing/customers/confidentiality.png')}}" alt="">
-                                        <h6 class="f-light mb-0 mt-2">Confidentialité des plaignants</h6>
+                                        <h6 class="f-light mb-0 mt-2">Résolution de votre plainte</h6>
                                     </div><img class="outline-box"
                                         src="{{ asset('assets/images/landing/decore/arrow-style-4.svg')}}" alt="">
                                 </div>
@@ -122,7 +125,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xxl-10 pt-5">
+                    <div class="col-xxl-10 pt-5" id="denoncer">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -162,15 +165,14 @@
                                                             <div class="mb-3">
                                                                 <label class="form-label pull-left">Titre de la
                                                                     dénonciation</label>
-                                                                <input class="form-control" name="title"
+                                                                <input class="form-control" name="title" value="Corruption"
                                                                     id="exampleFormControlInput1" type="text" required="required"
-                                                                    placeholder="Maltraitance des enfants">
+                                                                    placeholder="Maltraitance des enfants" +-
+                                                                    >
                                                                     <div class="valid-feedback pull-left">Validé !</div>
                                                             </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="row">
                                                         <div class="col">
                                                             <div>
                                                                 <label class="form-label pull-left"
@@ -178,19 +180,44 @@
                                                                     dénonciation</label>
                                                                 <select name="type" class="js-example-basic-single  col-sm-12"
                                                                  required="required">
-                                                                    <optgroup label="Developer">
-                                                                        <option value="AL">Alabama</option>
-                                                                        <option value="WY">Wyoming</option>
-                                                                    </optgroup>
-                                                                    <optgroup label="Designer">
-                                                                        <option value="WY">Peter</option>
-                                                                        <option value="WY">Hanry Die</option>
-                                                                        <option value="WY">John Doe</option>
-                                                                    </optgroup>
+                                                                        <option value="Abus de pouvoir">Abus de pouvoir</option>
+                                                                        <option value="Viol">Viol</option>
+                                                                        <option value="Arrestation">Arrestation</option>
+                                                                        <option value="Torture">Torture</option>
                                                                 </select>
                                                             </div>
                                                             <div class="valid-feedback pull-left">Validé !</div>
                                                         </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div>
+                                                                <label class="form-label pull-left"
+                                                                    for="exampleFormControlTextarea4">Type de personne</label>
+                                                                <select name="person_type" class="js-example-basic-single  col-sm-12"
+                                                                 required="required">
+                                                                        <option value="Temoin">Temoin</option>
+                                                                        <option value="Victime">Victime</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="valid-feedback pull-left">Validé !</div>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <div>
+                                                                <label class="form-label pull-left"
+                                                                    for="exampleFormControlTextarea4">Sexe</label>
+                                                                <select name="sexe" class="js-example-basic-single  col-sm-12"
+                                                                 required="required">
+                                                                        <option value="Masculin">Masculin</option>
+                                                                        <option value="Feminin">Feminin</option>
+                                                                        <option value="Autres">Autres</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="valid-feedback pull-left">Validé !</div>
+                                                        </div>
+
                                                     </div>
 
                                                     <button class="btn btn-primary nextBtn pull-right"
@@ -204,7 +231,7 @@
                                                             <div class="mb-3">
                                                                 <label class="form-label pull-left"
                                                                     for="exampleFormControlTextarea4">Lieu de l'incident</label>
-                                                                <input class="form-control" id="validationDefault03" required="required"
+                                                                <input class="form-control" id="validationDefault03" required="required" value="Cotonou"
                                                                     type="text" name="place" placeholder="Parakou">
                                                                     <div class="valid-feedback pull-left">Validé !</div>
                                                             </div>
@@ -213,7 +240,7 @@
                                                             <div class="mb-3">
                                                                 <div class="mb-3">
                                                                     <label class="form-label pull-left" for="exampleFormControlTextarea4">Date</label>
-                                                                    <input required class="form-control digits" name="date" type="date" value="2018-01-01">
+                                                                    <input required class="form-control digits" name="date" type="date" value="2023-03-26">
                                                                     <div class="valid-feedback pull-left">Validé !</div>
                                                                 </div>
                                                             </div>
@@ -228,7 +255,9 @@
                                                                     for="exampleFormControlTextarea4">Description de l'incident</label>
                                                                 <textarea class="form-control" name="description" required
                                                                     id="exampleFormControlTextarea4"
-                                                                    rows="3"></textarea>
+                                                                    rows="3">J'ai été victime d'un abus de pouvoir de la part d'un policier qui m'a arrêté sans raison valable et m'a torturé.
+                                                                </textarea>
+
                                                                     <div class="valid-feedback pull-left">Validé !</div>
                                                             </div>
                                                         </div>
@@ -248,7 +277,7 @@
                                                                     </label>
                                                                 <div class="input-group"><span class="input-group-text"
                                                                         id="inputGroupPrepend2">@</span>
-                                                                    <input class="form-control" name="secret_code"
+                                                                    <input class="form-control" name="secret_code" value="12345"
                                                                         id="validationDefaultUsername" type="text"
                                                                         placeholder="56892" required="required"
                                                                         aria-describedby="inputGroupPrepend2"
@@ -262,7 +291,7 @@
                                                                 <label class="form-label pull-left"
                                                                     for="exampleFormControlTextarea4">Preuves de l'incident
                                                                     </label>
-                                                                <input class="form-control" name="file_name" type="file" required="required" >
+                                                                <input class="form-control" name="file_name[]" type="file" multiple required="required" >
                                                                 <div class="valid-feedback pull-left">Validé !</div>
                                                             </div>
                                                         </div>

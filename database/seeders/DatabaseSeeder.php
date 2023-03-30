@@ -4,7 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use App\Models\Denunciations;
+use App\Models\Complement;
+use App\Models\Proofs;
+use App\Models\Rapport;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,11 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // Denunciations::factory()->count(10)->create();
+        // Complement::factory()->count(10)->create();
+        // Rapport::factory()->count(10)->create();
+        Proofs::factory()->count(10)->create();
     }
 }

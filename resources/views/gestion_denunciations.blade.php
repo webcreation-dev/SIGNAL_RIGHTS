@@ -35,7 +35,7 @@
                     <div class="tab-pane fade active show" id="pills-created" role="tabpanel" aria-labelledby="pills-created-tab">
                       <div class="card mb-0">
                         <div class="card-header d-flex">
-                          <h5 class="mb-0">Votre dénonciation</h5><a href="#">STATUT : </i><span class="badge badge-success">{{ App\Models\Denunciations::getNameStatus($denunciation->status)}}</span></a>
+                          <h5 class="mb-0">Votre dénonciation</h5><a href="#">STATUT : </i><span class="badge {{ App\Models\Denunciations::getColorStatus($denunciation->status)}} ">{{ App\Models\Denunciations::getNameStatus($denunciation->status)}}</span></a>
                         </div>
                         <div class="card-body p-0">
                           <div class="taskadd">
@@ -86,7 +86,16 @@
                                       <h6 class="task_title_0">NIVEAU DE PRIORITE</h6>
                                     </td>
                                     <td>
-                                      <p class="task_desc_0" style="text-align: justify;">{{$denunciation->level}}</p>
+                                      <p class="task_desc_0" style="text-align: justify;"><span class="badge {{ App\Models\Denunciations::getColorLevel($denunciation->level)}} ">{{ App\Models\Denunciations::getNameLevel($denunciation->level)}} </span></p>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                      <h6 class="task_title_0">OBSERVATIONS</h6>
+                                    </td>
+                                    <td>
+                                      <p class="task_desc_0" style="text-align: justify;">{{$denunciation->observations}}</p>
                                     </td>
                                 </tr>
 
@@ -209,50 +218,58 @@
                           </div>
                           <div class="card-body">
 
-                            <div class="gallery my-gallery card-body row" itemscope="">
-                                @foreach ($proofs as $proof)
-                                    <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope=""><a href="{{ asset('storage/' . $proof->file_name) }}" itemprop="contentUrl" data-size="1600x950"><img class="img-thumbnail" src="{{ asset('storage/' . $proof->file_name) }}" itemprop="thumbnail" alt="Image description"></a>
-                                    <figcaption itemprop="caption description">Image caption  1</figcaption>
-                                    </figure>
-                                @endforeach
+                            @if($proofs->isEmpty())
 
-
-                              </div>
-                              <!-- Root element of PhotoSwipe. Must have class pswp.-->
-                              <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="pswp__bg"></div>
-                                <div class="pswp__scroll-wrap">
-                                  <div class="pswp__container">
-                                    <div class="pswp__item"></div>
-                                    <div class="pswp__item"></div>
-                                    <div class="pswp__item"></div>
-                                  </div>
-                                  <div class="pswp__ui pswp__ui--hidden">
-                                    <div class="pswp__top-bar">
-                                      <div class="pswp__counter"></div>
-                                      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                                      <button class="pswp__button pswp__button--share" title="Share"></button>
-                                      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                                      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                                      <div class="pswp__preloader">
-                                        <div class="pswp__preloader__icn">
-                                          <div class="pswp__preloader__cut">
-                                            <div class="pswp__preloader__donut"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                                      <div class="pswp__share-tooltip"></div>
-                                    </div>
-                                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-                                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
-                                    <div class="pswp__caption">
-                                      <div class="pswp__caption__center"></div>
-                                    </div>
-                                  </div>
+                                <div class="details-bookmark text-center">
+                                    <div class="row" id="favouriteData"></div>
+                                    <div class="no-favourite"><span>Aucune preuves ajouté.</span></div>
                                 </div>
-                            </div>
+                            @else
+                                <div class="gallery my-gallery card-body row" itemscope="">
+                                    @foreach ($proofs as $proof)
+                                        <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope=""><a href="{{ asset('storage/' . $proof->file_name) }}" itemprop="contentUrl" data-size="1600x950"><img class="img-thumbnail" src="{{ asset('storage/' . $proof->file_name) }}" itemprop="thumbnail" alt="Image description"></a>
+                                        <figcaption itemprop="caption description">Image caption  1</figcaption>
+                                        </figure>
+                                    @endforeach
+
+
+                                </div>
+                                <!-- Root element of PhotoSwipe. Must have class pswp.-->
+                                <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="pswp__bg"></div>
+                                    <div class="pswp__scroll-wrap">
+                                    <div class="pswp__container">
+                                        <div class="pswp__item"></div>
+                                        <div class="pswp__item"></div>
+                                        <div class="pswp__item"></div>
+                                    </div>
+                                    <div class="pswp__ui pswp__ui--hidden">
+                                        <div class="pswp__top-bar">
+                                        <div class="pswp__counter"></div>
+                                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                                        <button class="pswp__button pswp__button--share" title="Share"></button>
+                                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                                        <div class="pswp__preloader">
+                                            <div class="pswp__preloader__icn">
+                                            <div class="pswp__preloader__cut">
+                                                <div class="pswp__preloader__donut"></div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                                        <div class="pswp__share-tooltip"></div>
+                                        </div>
+                                        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                                        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                                        <div class="pswp__caption">
+                                        <div class="pswp__caption__center"></div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            @endif
 
                           </div>
                         </div>
@@ -301,7 +318,7 @@
             </div>
           </div>
           <div class="col-xl-3 box-col-6">
-            <div class="md-sidebar"><a class="btn btn-primary md-sidebar-toggle" href="javascript:void(0)">task filter</a>
+            {{-- <div class="md-sidebar"><a class="btn btn-primary md-sidebar-toggle" href="javascript:void(0)">task filter</a> --}}
               <div class="md-sidebar-aside job-left-aside custom-scrollbar">
                 <div class="email-left-aside">
                   <div class="card">
@@ -311,7 +328,7 @@
                           <div class="media-size-email"><img class="me-3 rounded-circle" width="35" height="35" src="{{ asset('assets/images/landing/profil.png')}}" alt=""></div>
                           <div class="media-body">
                             <h6 class="f-w-600">ADMINISTRATEUR</h6>
-                            <p>#{{ Auth::user()->secret_code }}</p>
+                            <p>{{ Auth::user()->name }}</p>
                           </div>
                         </div>
                         <ul class="nav main-menu" role="tablist">
@@ -320,18 +337,19 @@
                             <a class="badge-light-primary btn-block btn-mail w-100" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span style="display: block; margin: auto;">AJOUTER RAPPORT</span></a>
                           </li>
                           <li class="nav-item"><span class="main-title"> Details</span></li>
-                          <li><a id="pills-created-tab" data-bs-toggle="pill" href="#pills-created" role="tab" aria-controls="pills-created" aria-selected="true"><span class="title"> Denonciation</span></a></li>
-                          <li><a class="show" id="personal" data-bs-toggle="pill" href="#personal" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title">Infos personnelles</span></a></li>
-                          <li><a class="show" id="pills-todaytask-tab" data-bs-toggle="pill" href="#pills-todaytask" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title"> Voir les rapports</span></a></li>
-                          <li><a class="show" id="complement" data-bs-toggle="pill" href="#complement" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title">   Ajouter infos <label class="badge badge-light-primary">1</label></span></a></li>
-                          <li><a class="show" id="proofs" data-bs-toggle="pill" href="#proofs" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title"> Voir les preuves <label class="badge badge-light-primary">1</label></span></a></li>
+
+                          <li><a id="pills-created-tab" data-bs-toggle="pill" href="#pills-created" role="tab" aria-controls="pills-created" aria-selected="true"><span > Denonciation</span></a></li>
+                          <li><a class="show" id="personal" data-bs-toggle="pill" href="#personal" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span >Infos personnelles</span></a></li>
+                          <li><a class="show" id="pills-todaytask-tab" data-bs-toggle="pill" href="#pills-todaytask" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span > Voir les rapports</span></a></li>
+                          <li><a class="show" id="complement" data-bs-toggle="pill" href="#complement" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span >   Ajouter infos </span></a></li>
+                          <li><a class="show" id="proofs" data-bs-toggle="pill" href="#proofs" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span > Voir les preuves </span></a></li>
 
                         </ul>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              {{-- </div> --}}
             </div>
           </div>
         </div>
@@ -356,13 +374,16 @@
 
                   <div class="mb-3 mt-0 col-md-12">
                     <label for="task-title">Titre</label>
-                    <input class="form-control" id="task-title" required="" name="title" type="text" required="" autocomplete="off">
+                    <input class="form-control" id="task-title" required="" value="Rapport de situation" name="title" type="text" required="" autocomplete="off">
                   </div>
 
 
                   <div class="mb-3 col-md-12 my-0">
                     <label for="task-title">Description</label>
-                    <textarea class="form-control" required="" name="description" required="" autocomplete="off">  </textarea>
+                    <textarea class="form-control" required="" name="description" required="" autocomplete="off">Nous avions mené notre enquete et nous avons trouvé les preuves suivantes :
+                    -Vidéo de la scène
+                    -Photo de la scène
+                    </textarea>
                   </div>
 
 

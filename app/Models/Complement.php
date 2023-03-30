@@ -23,6 +23,11 @@ class Complement extends Model
         return $query->where('denunciation_id', $denunciation_id);
     }
 
+    public static function getDenunciationComplements($denunciation_id)
+    {
+        return Complement::where('denunciation_id', $denunciation_id)->get();
+    }
+
     // public static function getNotViewComplements($complement_id) {
     //     $number = Complement::where('status')
     // }

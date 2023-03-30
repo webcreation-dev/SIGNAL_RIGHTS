@@ -35,7 +35,7 @@
                     <div class="tab-pane fade active show" id="pills-created" role="tabpanel" aria-labelledby="pills-created-tab">
                       <div class="card mb-0">
                         <div class="card-header d-flex">
-                          <h5 class="mb-0">Votre dénonciation</h5><a href="#">STATUT : </i><span class="badge badge-success">{{$denunciation[0]->status}}</span></a>
+                          <h5 class="mb-0">Votre dénonciation</h5><a href="#">STATUT : </i><span class="badge {{ App\Models\Denunciations::getColorStatus($denunciation[0]->status)}} ">{{ App\Models\Denunciations::getNameStatus($denunciation[0]->status)}}</span></a>
                         </div>
                         <div class="card-body p-0">
                           <div class="taskadd">
@@ -86,19 +86,31 @@
                                       <h6 class="task_title_0">NIVEAU DE PRIORITE</h6>
                                     </td>
                                     <td>
-                                      <p class="task_desc_0" style="text-align: justify;">{{$denunciation[0]->level}}</p>
+                                      <p class="task_desc_0" style="text-align: justify;"> <span class="badge {{ App\Models\Denunciations::getColorLevel($denunciation[0]->level)}} ">{{ App\Models\Denunciations::getNameLevel($denunciation[0]->level)}} </span></p>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td>
-                                      <h6 class="task_title_0">CODE DE LA DEMANDE</h6>
-                                      {{-- <p class="project_name_0">General</p> --}}
+                                      <h6 class="task_title_0">OBSERVATIONS</h6>
                                     </td>
                                     <td>
-                                      <p class="task_desc_0">{{ Auth::user()->generate_code}}</p>
+                                      <p class="task_desc_0" style="text-align: justify;">{{$denunciation[0]->observations}}</p>
                                     </td>
                                 </tr>
+
+                                <tr>
+                                    <td>
+                                        <h6 class="task_title_0">CODE DE LA DEMANDE</h6>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <p class="task_desc_0 code">{{ Auth::user()->generate_code }}</p>
+                                            <span><i class="icon-eye toggle-code"></i></span>
+                                        </div>
+                                    </td>
+                                </tr>
+
 
                               </table>
                             </div>
@@ -114,50 +126,59 @@
                           </div>
                           <div class="card-body">
 
-                            <div class="gallery my-gallery card-body row" itemscope="">
-                                @foreach ($proofs as $proof)
-                                    <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope=""><a href="{{ asset('storage/' . $proof->file_name) }}" itemprop="contentUrl" data-size="1600x950"><img class="img-thumbnail" src="{{ asset('storage/' . $proof->file_name) }}" itemprop="thumbnail" alt="Image description"></a>
-                                    <figcaption itemprop="caption description">Image caption  1</figcaption>
-                                    </figure>
-                                @endforeach
+                            @if($proofs->isEmpty())
 
-
-                              </div>
-                              <!-- Root element of PhotoSwipe. Must have class pswp.-->
-                              <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="pswp__bg"></div>
-                                <div class="pswp__scroll-wrap">
-                                  <div class="pswp__container">
-                                    <div class="pswp__item"></div>
-                                    <div class="pswp__item"></div>
-                                    <div class="pswp__item"></div>
-                                  </div>
-                                  <div class="pswp__ui pswp__ui--hidden">
-                                    <div class="pswp__top-bar">
-                                      <div class="pswp__counter"></div>
-                                      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                                      <button class="pswp__button pswp__button--share" title="Share"></button>
-                                      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                                      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                                      <div class="pswp__preloader">
-                                        <div class="pswp__preloader__icn">
-                                          <div class="pswp__preloader__cut">
-                                            <div class="pswp__preloader__donut"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                                      <div class="pswp__share-tooltip"></div>
-                                    </div>
-                                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-                                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
-                                    <div class="pswp__caption">
-                                      <div class="pswp__caption__center"></div>
-                                    </div>
-                                  </div>
+                                <div class="details-bookmark text-center">
+                                    <div class="row" id="favouriteData"></div>
+                                    <div class="no-favourite"><span>Aucune preuve ajouté.</span></div>
                                 </div>
-                            </div>
+                            @else
+                                <div class="gallery my-gallery card-body row" itemscope="">
+                                    @foreach ($proofs as $proof)
+                                        <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope=""><a href="{{ asset('storage/' . $proof->file_name) }}" itemprop="contentUrl" data-size="1600x950"><img class="img-thumbnail" src="{{ asset('storage/' . $proof->file_name) }}" itemprop="thumbnail" alt="Image description"></a>
+                                        <figcaption itemprop="caption description">Image caption  1</figcaption>
+                                        </figure>
+                                    @endforeach
+
+
+                                </div>
+                                <!-- Root element of PhotoSwipe. Must have class pswp.-->
+                                <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="pswp__bg"></div>
+                                    <div class="pswp__scroll-wrap">
+                                    <div class="pswp__container">
+                                        <div class="pswp__item"></div>
+                                        <div class="pswp__item"></div>
+                                        <div class="pswp__item"></div>
+                                    </div>
+                                    <div class="pswp__ui pswp__ui--hidden">
+                                        <div class="pswp__top-bar">
+                                        <div class="pswp__counter"></div>
+                                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                                        <button class="pswp__button pswp__button--share" title="Share"></button>
+                                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                                        <div class="pswp__preloader">
+                                            <div class="pswp__preloader__icn">
+                                            <div class="pswp__preloader__cut">
+                                                <div class="pswp__preloader__donut"></div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                                        <div class="pswp__share-tooltip"></div>
+                                        </div>
+                                        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                                        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                                        <div class="pswp__caption">
+                                        <div class="pswp__caption__center"></div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+                            @endif
 
                           </div>
                         </div>
@@ -242,7 +263,7 @@
             </div>
           </div>
           <div class="col-xl-3 box-col-6">
-            <div class="md-sidebar"><a class="btn btn-primary md-sidebar-toggle" href="javascript:void(0)">task filter</a>
+            {{-- <div class="md-sidebar"><a class="btn btn-primary md-sidebar-toggle" href="javascript:void(0)">task filter</a> --}}
               <div class="md-sidebar-aside job-left-aside custom-scrollbar">
                 <div class="email-left-aside">
                   <div class="card">
@@ -255,7 +276,9 @@
                             <p>#{{ Auth::user()->secret_code }}</p>
                           </div>
                         </div>
+
                         <ul class="nav main-menu" role="tablist">
+
                           <li class="nav-item" style="text-align: center;">
                             <a href="{{route('denunciations.edit', ['denunciation' => $denunciation[0]->id ])}}" class="badge-light-primary btn-block btn-mail w-100"><span style="display: block; margin: auto;">PERSONNEL</span></a>
                             <a class="badge-light-primary btn-block btn-mail w-100" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span style="display: block; margin: auto;">AJOUTER INFOS</span></a>
@@ -263,9 +286,9 @@
                           </li>
                           <li class="nav-item"><span class="main-title"> Details</span></li>
                           <li><a id="pills-created-tab" data-bs-toggle="pill" href="#pills-created" role="tab" aria-controls="pills-created" aria-selected="true"><span class="title"> Denonciation</span></a></li>
-                          <li><a class="show" id="pills-todaytask-tab" data-bs-toggle="pill" href="#pills-todaytask" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title"> Rapports <label class="badge badge-light-primary">1</label></span></a></li>
+                          <li><a class="show" id="proofs" data-bs-toggle="pill" href="#proofs" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title"> Mes preuves</span></a></li>
+                          <li><a class="show" id="pills-todaytask-tab" data-bs-toggle="pill" href="#pills-todaytask" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title"> Rapports</span></a></li>
                           <li><a class="show" id="complement" data-bs-toggle="pill" href="#complement" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title"> Infos supplémentaires</span></a></li>
-                          <li><a class="show" id="proofs" data-bs-toggle="pill" href="#proofs" role="tab" aria-controls="pills-todaytask" aria-selected="false"><span class="title"> Preuves</span></a></li>
 
                         </ul>
                       </div>
@@ -273,7 +296,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            {{-- </div> --}}
           </div>
         </div>
       </div>
@@ -297,28 +320,24 @@
 
                     <div class="mb-3 mt-0 col-md-12">
                         <label for="task-title">Type d'ajout</label>
-                        <select class="js-example-basic-single" required="" name="type">
+                        <select class="js-example-basic-single" required="" name="type" onchange="toggleFields(this);">
                           <option value="proof">Preuves</option>
                           <option value="description">Description</option>
                         </select>
                     </div>
 
-                  <div class="mb-3 mt-0 col-md-12">
+                  <div class="mb-3 mt-0 col-md-12" id="title" style="display: none;">
                     <label for="task-title">Titre</label>
-                    <input class="form-control" id="task-title" required="" name="title" type="text" required="" autocomplete="off">
+                    <input class="form-control" value="Description de la situation"   name="title" type="text" autocomplete="off">
                   </div>
-
-                  <div class="mb-3 mt-0 col-md-12">
+                  <div class="mb-3 mt-0 col-md-12" id="preuves" style="display: block;">
                     <label for="task-title">Preuves</label>
-                    <input class="form-control" name="file_name" type="file" required="required" >
+                    <input class="form-control"  name="file_name[]" multiple type="file" >
                   </div>
 
-
-
-
-                  <div class="mb-3 col-md-12 my-0">
+                  <div class="mb-3 col-md-12 my-0" id="content" style="display: none;">
                     <label for="task-title">Decrivez ici</label>
-                    <textarea class="form-control" required="" name="content" required="" autocomplete="off">  </textarea>
+                    <textarea class="form-control"   name="content" autocomplete="off"> Il m'as demandé d'obtempérer, étant donné que je ne savais pas ce pourquoi on m'accusait, je n'ai pas obeit. Il m'a donc plaqué contre le sol  </textarea>
                   </div>
 
 
@@ -357,9 +376,8 @@
 
                   <div class="mb-3 col-md-12 my-0">
                     <label for="task-title">Donnez vos raisons</label>
-                    <textarea class="form-control" required="" name="observations" required="" autocomplete="off">  </textarea>
+                    <textarea class="form-control" required="" name="observations" required="" autocomplete="off"> Je souhaite annuler ma denociation car je ma suis rendu compte finalement que c'était une fausse alerte </textarea>
                   </div>
-
 
                 </div>
 

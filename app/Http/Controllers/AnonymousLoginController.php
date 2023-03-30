@@ -26,6 +26,9 @@ class AnonymousLoginController extends Controller
         Auth::login($user);
 
         // Redirection de l'utilisateur
+        $message = "Bienvenue sur SIGNAL RIGHTS.";
+        session()->flash('message', $message);
+
         return redirect(route('denunciations.index'));
     }
 

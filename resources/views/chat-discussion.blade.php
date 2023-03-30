@@ -7,7 +7,7 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-6">
-                        <h3>Chat App</h3>
+                        <h3>Chat de discussion</h3>
                     </div>
                     <div class="col-6">
                         <ol class="breadcrumb">
@@ -15,8 +15,8 @@
                                     <svg class="stroke-icon">
                                         <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-home')}}"></use>
                                     </svg></a></li>
-                            <li class="breadcrumb-item">Chat</li>
-                            <li class="breadcrumb-item active"> Chat App</li>
+                            <li class="breadcrumb-item">Accueil</li>
+                            <li class="breadcrumb-item active"> Discussion</li>
                         </ol>
                     </div>
                 </div>
@@ -32,86 +32,72 @@
                                 <!-- Chat left side Start-->
                                 <div class="chat-left-aside">
                                     <div class="media"><img class="rounded-circle user-image"
-                                            src="{{ asset('assets/images/user/12.png')}}" alt="">
+                                            src="{{ asset('assets/images/landing/profil.png')}}" alt="">
                                         <div class="about">
-                                            <div class="name f-w-600">Mark Jecno</div>
-                                            <div class="status">Status...</div>
+                                            <div class="name f-w-600">#{{ Auth::user()->secret_code }}</div>
+                                            <div class="status">Anonyme</div>
                                         </div>
                                     </div>
                                     <div class="people-list" id="people-list">
                                         <div class="search">
                                             <form class="theme-form">
                                                 <div class="mb-3">
-                                                    <input class="form-control" type="text" placeholder="Search"><i
+                                                    <input class="form-control" type="text" placeholder="Rechercher"><i
                                                         class="fa fa-search"></i>
                                                 </div>
                                             </form>
                                         </div>
                                         <ul class="list">
                                             <li class="clearfix"><img class="rounded-circle user-image"
-                                                    src="{{ asset('assets/images/user/1.jpg')}}" alt="">
+                                                    src="{{ asset('assets/images/profil1.jpeg')}}" alt="">
                                                 <div class="status-circle away"></div>
                                                 <div class="about">
-                                                    <div class="name">Vincent Porter</div>
-                                                    <div class="status">Hello Name</div>
+                                                    <div class="name">Jacob HOUETO</div>
+                                                    <div class="status">Mananger</div>
                                                 </div>
                                             </li>
                                             <li class="clearfix"><img class="rounded-circle user-image"
-                                                    src="{{ asset('assets/images/user/2.png')}}" alt="">
+                                                    src="{{ asset('assets/images/profil2.jpeg')}}" alt="">
                                                 <div class="status-circle online"></div>
                                                 <div class="about">
-                                                    <div class="name">Aiden Chavez</div>
-                                                    <div class="status">Out is my favorite.</div>
+                                                    <div class="name">Hervé ZOSSOU</div>
+                                                    <div class="status">Technicien.</div>
                                                 </div>
                                             </li>
                                             <li class="clearfix"><img class="rounded-circle user-image"
-                                                    src="{{ asset('assets/images/user/8.jpg')}}" alt="">
+                                                    src="{{ asset('assets/images/profil3.jpeg')}}" alt="">
                                                 <div class="status-circle online"></div>
                                                 <div class="about">
-                                                    <div class="name">Prasanth Anand</div>
-                                                    <div class="status">Change for anyone.</div>
+                                                    <div class="name">Chantal NOUMON</div>
+                                                    <div class="status">Rédacteur SEO.</div>
+                                                </div>
+                                            </li>
+
+                                            <li class="clearfix"><img class="rounded-circle user-image"
+                                                    src="{{ asset('assets/images/profil5.jpg')}}" alt="">
+                                                <div class="status-circle online"></div>
+                                                <div class="about">
+                                                    <div class="name">Nicolas AKANNI</div>
+                                                    <div class="status">Commercial.</div>
                                                 </div>
                                             </li>
                                             <li class="clearfix"><img class="rounded-circle user-image"
-                                                    src="{{ asset('assets/images/user/4.jpg')}}" alt="">
+                                                    src="{{ asset('assets/images/profil6.jpg')}}" alt="">
                                                 <div class="status-circle offline"></div>
                                                 <div class="about">
-                                                    <div class="name">Venkata Satyamu</div>
-                                                    <div class="status">First bun like a sun.</div>
+                                                    <div class="name">Vincent DEGAN</div>
+                                                    <div class="status">Manager.</div>
                                                 </div>
                                             </li>
                                             <li class="clearfix"><img class="rounded-circle user-image"
-                                                    src="{{ asset('assets/images/user/5.jpg')}}" alt="">
+                                                    src="{{ asset('assets/images/profil7.jpg')}}" alt="">
                                                 <div class="status-circle online"></div>
                                                 <div class="about">
-                                                    <div class="name">Ginger Johnston</div>
-                                                    <div class="status">it's my life. Mind it.</div>
+                                                    <div class="name">Jeanne GBEDABT</div>
+                                                    <div class="status">Marketer</div>
                                                 </div>
                                             </li>
-                                            <li class="clearfix"><img class="rounded-circle user-image"
-                                                    src="{{ asset('assets/images/user/8.jpg')}}" alt="">
-                                                <div class="status-circle offline"></div>
-                                                <div class="about">
-                                                    <div class="name">Kori Thomas</div>
-                                                    <div class="status">Change for anyone.</div>
-                                                </div>
-                                            </li>
-                                            <li class="clearfix"><img class="rounded-circle user-image"
-                                                    src="{{ asset('assets/images/user/1.jpg')}}" alt="">
-                                                <div class="status-circle online"></div>
-                                                <div class="about">
-                                                    <div class="name">Vincent Porter</div>
-                                                    <div class="status">Hello Name</div>
-                                                </div>
-                                            </li>
-                                            <li class="clearfix"><img class="rounded-circle user-image"
-                                                    src="{{ asset('assets/images/user/8.jpg')}}" alt="">
-                                                <div class="status-circle online"></div>
-                                                <div class="about">
-                                                    <div class="name">Kori Thomas</div>
-                                                    <div class="status">Change for anyone.</div>
-                                                </div>
-                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>
@@ -130,11 +116,11 @@
                                     <div class="chat">
                                         <!-- chat-header start-->
                                         <div class="chat-header clearfix"><img class="rounded-circle"
-                                                src="{{ asset('assets/images/user/8.jpg')}}" alt="">
+                                                src="{{ asset('assets/images/profil6.jpg')}}" alt="">
                                             <div class="about">
-                                                <div class="name">Kori Thomas <span
-                                                        class="font-primary f-12">Typing...</span></div>
-                                                <div class="status">Last Seen 3:55 PM</div>
+                                                <div class="name"> Vincent DEGAN <span
+                                                        class="font-primary f-12">Manager chez AMNESTY</span></div>
+                                                {{-- <div class="status">Last Seen 3:55 PM</div> --}}
                                             </div>
                                             <ul class="list-inline float-start float-sm-end chat-menu-icons">
                                                 <li class="list-inline-item"><a href="#"><i class="icon-search"></i></a>
@@ -155,37 +141,38 @@
                                                 <li>
                                                     <div class="message my-message"><img
                                                             class="rounded-circle float-start chat-user-img img-30"
-                                                            src="{{ asset('assets/images/user/3.png')}}" alt="">
+                                                            src="{{ asset('assets/images/profil6.jpg')}}" alt="">
                                                         <div class="message-data text-end"><span
-                                                                class="message-data-time">10:12 am</span></div> Are we
-                                                        meeting today? Project has been already finished and I have
-                                                        results to show you.
+                                                                class="message-data-time">10:12 </span></div>Bonjour
+                                                                à vous ! Comment puis-je vous aider ?
                                                     </div>
                                                 </li>
                                                 <li class="clearfix">
                                                     <div class="message other-message pull-right"><img
                                                             class="rounded-circle float-end chat-user-img img-30"
-                                                            src="{{ asset('assets/images/user/12.png')}}" alt="">
+                                                            src="{{ asset('assets/images/landing/profil.png')}}" alt="">
                                                         <div class="message-data"><span class="message-data-time">10:14
-                                                                am</span></div> Well I am not sure. The rest of the team
-                                                        is not here yet. Maybe in an hour or so?
+                                                                </span></div> J'ai été victime d'un abus de pouvoir et
+                                                                je voudrais savoir ou en est l'enquete concernant ma dénonciation.
                                                     </div>
                                                 </li>
                                                 <li class="clearfix">
                                                     <div class="message other-message pull-right"><img
                                                             class="rounded-circle float-end chat-user-img img-30"
-                                                            src="{{ asset('assets/images/user/12.png')}}" alt="">
+                                                            src="{{ asset('assets/images/landing/profil.png')}}" alt="">
                                                         <div class="message-data"><span class="message-data-time">10:14
-                                                                am</span></div> Well I am not sure. The rest of the team
+                                                                </span></div> Je n'ai eu aucun rapport concernant l'enquete.
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="message my-message mb-0"><img
                                                             class="rounded-circle float-start chat-user-img img-30"
-                                                            src="{{ asset('assets/images/user/3.png')}}" alt="">
+                                                            src="{{ asset('assets/images/profil6.jpg')}}" alt="">
                                                         <div class="message-data text-end"><span
-                                                                class="message-data-time">10:20 am</span></div> Actually
-                                                        everything was fine. I'm very excited to show this to our team.
+                                                                class="message-data-time">10:20 </span></div> Nous
+                                                                sommes à pied d'oeuvre pour la résolution de votre enquete.
+                                                                Nous vous tiendrons informé, et n'oubliez pas d'ajouter votre mail
+                                                                ou numéro de téléphone pour que nous puissions vous contacter.
                                                     </div>
                                                 </li>
                                             </ul>
@@ -203,7 +190,7 @@
                                                             type="text" name="message-to-send"
                                                             placeholder="Type a message......">
                                                         <button class="input-group-text btn btn-primary"
-                                                            type="button">SEND</button>
+                                                            type="button">ENVOYER</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -215,7 +202,7 @@
                                 </div>
                                 <div class="col ps-0 chat-menu">
                                     <ul class="nav nav-tabs border-tab nav-primary" id="info-tab" role="tablist">
-                                        <li class="nav-item"><a class="nav-link active" id="info-home-tab"
+                                        {{-- <li class="nav-item"><a class="nav-link active" id="info-home-tab"
                                                 data-bs-toggle="tab" href="#info-home" role="tab"
                                                 aria-selected="true">CALL</a>
                                             <div class="material-border"></div>
@@ -224,15 +211,15 @@
                                                 data-bs-toggle="tab" href="#info-profile" role="tab"
                                                 aria-selected="false">STATUS</a>
                                             <div class="material-border"></div>
-                                        </li>
-                                        <li class="nav-item"><a class="nav-link" id="contact-info-tab"
+                                        </li> --}}
+                                        <li class="nav-item"><a class="nav-link active" id="contact-info-tab"
                                                 data-bs-toggle="tab" href="#info-contact" role="tab"
-                                                aria-selected="false">PROFILE</a>
+                                                aria-selected="false">PROFIL</a>
                                             <div class="material-border"></div>
                                         </li>
                                     </ul>
                                     <div class="tab-content" id="info-tabContent">
-                                        <div class="tab-pane fade show active" id="info-home" role="tabpanel"
+                                        {{-- <div class="tab-pane fade show active" id="info-home" role="tabpanel"
                                             aria-labelledby="info-home-tab">
                                             <div class="people-list">
                                                 <ul class="list">
@@ -332,20 +319,20 @@
                                                         class="icofont icofont-emo-rolling-eyes font-success f-20"></i>
                                                 </p>
                                             </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="info-contact" role="tabpanel"
+                                        </div> --}}
+                                        <div class="tab-pane fade show active" id="info-contact" role="tabpanel"
                                             aria-labelledby="contact-info-tab">
                                             <div class="user-profile">
                                                 <div class="image">
                                                     <div class="avatar text-center"><img alt=""
-                                                            src="{{ asset('assets/images/user/2.png')}}"></div>
+                                                            src="{{ asset('assets/images/landing/profil.png')}}"></div>
                                                     <div class="icon-wrapper"><i
                                                             class="icofont icofont-pencil-alt-5"></i></div>
                                                 </div>
                                                 <div class="user-content text-center">
-                                                    <h5 class="text-uppercase">mark jenco</h5>
+                                                    <h5 class="text-uppercase">anonyme</h5>
                                                     <div class="social-media">
-                                                        <ul class="list-inline">
+                                                        {{-- <ul class="list-inline">
                                                             <li class="list-inline-item"><a
                                                                     href="https://www.facebook.com/" target="_blank"><i
                                                                         class="fa fa-facebook"></i></a></li>
@@ -361,9 +348,9 @@
                                                                         class="fa fa-instagram"></i></a></li>
                                                             <li class="list-inline-item"><a href="https://rss.app/"
                                                                     target="_blank"><i class="fa fa-rss"></i></a></li>
-                                                        </ul>
+                                                        </ul> --}}
                                                     </div>
-                                                    <hr>
+                                                    {{-- <hr>
                                                     <div class="follow text-center">
                                                         <div class="row">
                                                             <div class="col border-right"><span>Following</span>
@@ -379,7 +366,7 @@
                                                         <p class="mb-0">Mark.jecno23@gmail.com</p>
                                                         <p class="mb-0">+91 365 - 658 - 1236</p>
                                                         <p class="mb-0">Fax: 123-4560</p>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>

@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
  */
 class UserFactory extends Factory
 {
+    protected $model = Proofs::class;
+
     /**
      * Define the model's default state.
      *

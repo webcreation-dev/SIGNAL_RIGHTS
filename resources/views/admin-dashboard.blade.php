@@ -54,7 +54,7 @@
                                             <td>{{$denunciation->type}}</td>
                                             <td>{{$denunciation->place}}</td>
                                             <td>{{$denunciation->date}}</td>
-                                            <td><span class="badge badge-success">{{$denunciation->status}}</span></td>
+                                            <td><span class="badge {{ App\Models\Denunciations::getColorStatus($denunciation->status)}}"> {{ App\Models\Denunciations::getNameStatus($denunciation->status)}}</span></td>
                                             <td>
                                                 <ul class="action">
                                                     {{-- <li class="edit"> <a href="#"><i class="icon-pencil-alt"></i></a></li>

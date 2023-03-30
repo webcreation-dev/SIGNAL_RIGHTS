@@ -20,4 +20,9 @@ class Rapport extends Model
     {
         return $query->where('denunciation_id', $denunciation_id);
     }
+
+    public static function getDenunciationRapports($denunciation_id)
+    {
+        return Rapport::where('denunciation_id', $denunciation_id)->get();
+    }
 }

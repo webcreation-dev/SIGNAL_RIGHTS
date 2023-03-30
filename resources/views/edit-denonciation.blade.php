@@ -46,7 +46,7 @@
 
                             </div>
                         </div>
-                        <form action="{{route('denunciations.update', ['denunciation' => $denunciation[0]->id ])}}" class="needs-validation" novalidate="" enctype="multipart/form-data" method="POST">
+                        <form action="{{route('denunciations.update', ['denunciation' => $denunciation->id ])}}" class="needs-validation" novalidate="" enctype="multipart/form-data" method="POST">
                             @csrf
                             @method('PUT')
 
@@ -57,7 +57,7 @@
                                         <div class="mb-3">
                                             <label class="form-label pull-left">Nom</label>
                                             <input class="form-control" name="last_name"
-                                                id="exampleFormControlInput1" type="text" value="{{ $denunciation[0]->last_name }}"
+                                                id="exampleFormControlInput1" type="text" value="{{ $denunciation->last_name ?? 'YESSIN' }}"
                                                 placeholder="YESSIN">
                                                 <div class="valid-feedback pull-left">Validé !</div>
                                         </div>
@@ -70,7 +70,7 @@
                                         <div class="mb-3">
                                             <label class="form-label pull-left">Prenom</label>
                                             <input class="form-control" name="first_name"
-                                                id="exampleFormControlInput1" type="text" value="{{ $denunciation[0]->first_name }}"
+                                                id="exampleFormControlInput1" type="text" value="{{ $denunciation->first_name ?? 'Géraud' }}"
                                                 placeholder="Géraud">
                                                 <div class="valid-feedback pull-left">Validé !</div>
                                         </div>
@@ -88,7 +88,7 @@
                                         <div class="mb-3">
                                             <label class="form-label pull-left">Email</label>
                                             <input class="form-control" name="email"
-                                                id="exampleFormControlInput1" type="email"  value="{{ $denunciation[0]->email }}"
+                                                id="exampleFormControlInput1" type="email"  value="{{ $denunciation->email ?? 'adjilan2403@gmail.com' }}"
                                                 placeholder="geraudyessin@gmail.com">
                                                 <div class="valid-feedback pull-left">Validé !</div>
                                         </div>
@@ -98,7 +98,7 @@
                                         <div class="mb-3">
                                             <label class="form-label pull-left">Telephone</label>
                                             <input class="form-control" name="phone"
-                                                id="exampleFormControlInput1" type="text"  value="{{ $denunciation[0]->phone }}"
+                                                id="exampleFormControlInput1" type="text"  value="{{ $denunciation->phone ?? '+229 96 32 14 52' }}"
                                                 placeholder="+229 96 15 47 85">
                                                 <div class="valid-feedback pull-left">Validé !</div>
                                         </div>
@@ -110,7 +110,7 @@
                                         <div class="mb-3">
                                             <label class="form-label pull-left">Lieu de rédidence</label>
                                             <input class="form-control" name="place_personal"
-                                                id="exampleFormControlInput1" type="text"  value="{{ $denunciation[0]->place_personal }}"
+                                                id="exampleFormControlInput1" type="text"  value="{{ $denunciation->place_personal ?? 'Calavi Cotonou' }}"
                                                 placeholder="Benin Cotonou Qtier Houeyho">
                                                 <div class="valid-feedback pull-left">Validé !</div>
                                         </div>

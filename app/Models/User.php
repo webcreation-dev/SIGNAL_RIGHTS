@@ -23,6 +23,7 @@ class User extends Authenticatable
         'secret_code',
         'generate_code',
         'password',
+        'role',
     ];
 
     /**
@@ -47,5 +48,17 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         return $this->role === $role;
+    }
+
+    public static function getUserRole($id) {
+        $role = User::where('id', $id)->first()->role;
+
+        if($role === 'admin') {
+            return 'ADMINISTRATEUR';
+        } else if($role === 'user') {
+            return 'ANONYME';
+        } else {
+            return 'MANAGER';
+        }
     }
 }

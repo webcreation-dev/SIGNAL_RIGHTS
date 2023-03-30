@@ -22,7 +22,7 @@
 <script src="{{ asset('assets/js/chart/apex-chart/moment.min.js')}}"></script>
 <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js')}}"></script>
 <script src="{{ asset('assets/js/dashboard/default.js')}}"></script>
-<script src="{{ asset('assets/js/notify/index.js')}}"></script>
+{{-- <script src="{{ asset('assets/js/notify/index.js')}}"></script> --}}
 <script src="{{ asset('assets/js/typeahead/handlebars.js')}}"></script>
 <script src="{{ asset('assets/js/typeahead/typeahead.bundle.js')}}"></script>
 <script src="{{ asset('assets/js/typeahead/typeahead.custom.js')}}"></script>

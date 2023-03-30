@@ -34,6 +34,8 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->string('place_personal')->nullable();
             $table->string('accord')->default('non');
+            $table->string('person_type');
+            $table->string('sexe');
             $table->string('observations')->default('AUCUNE');
 
             $table->timestamps();

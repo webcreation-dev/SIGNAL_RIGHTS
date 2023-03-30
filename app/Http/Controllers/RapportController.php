@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RaportMail;
+use App\Models\Denunciations;
+use App\Models\Email;
 use App\Models\Rapport;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class RapportController extends Controller
 {
@@ -29,7 +34,17 @@ class RapportController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        Rapport::create($data);
+        $rapports = Rapport::create($data);
+
+        $denunciation = Denunciations::find($request->denunciation_id);
+
+        if($denunciation->email != null) {
+            $mail = new RaportMail($rapports);
+            Mail::to($denunciation->email)->send($mail);
+        }
+
+        $message = "Rapport créée avec succès.";
+        session()->flash('message', $message);
 
         return back();
 

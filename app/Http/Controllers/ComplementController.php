@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ComplementMail;
 use App\Models\Complement;
+use App\Models\Denunciations;
+use App\Models\Email;
 use App\Models\Proofs;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ComplementController extends Controller
 {
@@ -31,17 +36,36 @@ class ComplementController extends Controller
     {
         if($request->type == 'proof') {
 
-            $path = $request->file('file_name')->store('uploads', 'public');
-            $data['file_name'] = $path;
-            Proofs::create([
-                'denunciation_id' => $request->denunciation_id,
-                'file_name' => $path,
-            ]);
+            $files = $request->file('file_name');
+            foreach ($files as $file) {
+
+                $request->validate([
+                    'file_name.*' => 'max:2048',
+                ]);
+
+                $path = $file->store('uploads', 'public');
+                Proofs::create([
+                    'denunciation_id' => $request->denunciation_id,
+                    'file_name' => $path,
+                ]);
+            }
 
         }else {
             $data = $request->all();
-            Complement::create($data);
+            $complement = Complement::create($data);
+
+            $mail = new ComplementMail($complement);
+            $admin = User::where('role', 'admin')->first();
+            $emails = Email::pluck('mail')->toArray();
+
+            Mail::to($admin->email)
+            ->cc($emails)
+            ->send($mail);
+
         }
+
+        $message = "Information ajouté avec succès.";
+        session()->flash('message', $message);
 
 
         return redirect(route('denunciations.index'));

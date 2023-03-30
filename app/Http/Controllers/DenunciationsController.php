@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\DenunciationsMail;
 use App\Models\Denunciations;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreAnonymousRequest;
 use App\Models\Complement;
+use App\Models\Email;
 use App\Models\Proofs;
 use App\Models\Rapport;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class DenunciationsController extends Controller
 {
@@ -22,9 +25,14 @@ class DenunciationsController extends Controller
     {
         $denunciation = Denunciations::byUser(Auth::user()->id)->get();
 
-        $rapports = Rapport::byDenunciation($denunciation[0]->id)->get();
-        $proofs = Proofs::byDenunciation($denunciation[0]->id)->get();
-        $complements = Complement::byDenunciation($denunciation[0]->id)->get();
+        if($denunciation->isEmpty()) {
+            return back();
+        } else{
+
+            $rapports = Rapport::byDenunciation($denunciation[0]->id)->get();
+            $proofs = Proofs::byDenunciation($denunciation[0]->id)->get();
+            $complements = Complement::byDenunciation($denunciation[0]->id)->get();
+        }
 
         return view('user-dashboard', compact('denunciation', 'rapports', 'proofs', 'complements'));
     }
@@ -45,25 +53,50 @@ class DenunciationsController extends Controller
         $user = User::create([
             'secret_code' => $request->secret_code,
             'generate_code' => rand(10000, 99999),
-            'role' => 'user'
+            'role' => 'user',
         ]);
 
         $data = $request->all();
-        $data = array_merge($data, ['user_id' => $user->id, 'status' => 'sent']);
+
+        $data = array_merge($data, ['user_id' => $user->id, 'status' => 'sent', 'file_name' => 'file']);
 
         $denunciation = Denunciations::create($data);
 
-        $path = $request->file('file_name')->store('uploads', 'public');
-        $data['file_name'] = $path;
-        Proofs::create([
-            'denunciation_id' => $denunciation->id,
-            'file_name' => $path,
-        ]);
+        $files = $request->file('file_name');
+
+        foreach ($files as $file) {
+
+            $request->validate([
+                'file_name.*' => 'max:2048',
+            ]);
+
+            $path = $file->store('uploads', 'public');
+            Proofs::create([
+                'denunciation_id' => $denunciation->id,
+                'file_name' => $path,
+            ]);
+        }
+
+        // $mail = new DenunciationsMail($denunciation);
+
+        // $admin = User::where('role', 'admin')->first();
+        // $emails = Email::pluck('mail')->toArray();
+        // Mail::to($admin->email)
+        // ->cc($emails)
+        // ->send($mail);
+
+
+        $message = "Denonciation envoyé avec succès.";
+        session()->flash('message', $message);
+
+        $generate_code = $user->generate_code." est le code de votre demande.";
+        session()->flash('generate_code', $generate_code);
+
 
         event(new Registered($user));
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(route('denunciations.edit', ['denunciation' => $denunciation->id ]));
     }
 
     /**
@@ -77,9 +110,9 @@ class DenunciationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Denunciations $denunciations)
+    public function edit(Request $request, Denunciations $denunciations)
     {
-        $denunciation = $denunciations->get();
+        $denunciation = $denunciations->find($request->denunciation);
         return view('edit-denonciation', compact('denunciation'));
     }
 
@@ -99,6 +132,8 @@ class DenunciationsController extends Controller
         $denunciation[0]->accord = ($request->accord == 'on') ? 'oui' : 'non';
         $denunciation[0]->save();
 
+        $message = "Informations personnelles ajoutés avec succès.";
+        session()->flash('message', $message);
         return redirect(route('denunciations.index'));
     }
 
@@ -142,6 +177,9 @@ class DenunciationsController extends Controller
         $denunciation->level = $request->level;
         $denunciation->save();
 
+        $message = "Statut de la dénonciation modifié avec succès.";
+        session()->flash('message', $message);
+
         return back();
     }
 
@@ -153,6 +191,9 @@ class DenunciationsController extends Controller
         $denunciation->status = 'cancel';
         $denunciation->observations = $request->observations;
         $denunciation->save();
+
+        $message = "Dénonciation annulé avec succès.";
+        session()->flash('message', $message);
 
         return back();
     }

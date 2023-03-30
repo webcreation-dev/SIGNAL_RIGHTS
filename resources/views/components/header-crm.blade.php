@@ -148,7 +148,7 @@
               </ul>
             </div>
           </li> --}}
-          <li class="onhover-dropdown">
+          {{-- <li class="onhover-dropdown">
             <div class="notification-box">
               <svg>
                 <use href="{{ asset('assets/svg/icon-sprite.svg#notification')}}"></use>
@@ -172,18 +172,36 @@
                 <li><a class="f-w-700" href="#">Check all</a></li>
               </ul>
             </div>
-          </li>
+          </li> --}}
           <li class="profile-nav onhover-dropdown pe-0 py-0">
             <div class="media profile-media"><img class="b-r-10" width="35" height="35" src="{{ asset('assets/images/landing/profil.png')}}" alt="">
-              <div class="media-body"><span> #{{Auth::user()->secret_code}}  </span>
-                <p class="mb-0 font-roboto">Anonyme <i class="middle fa fa-angle-down"></i></p>
-              </div>
+
+                @can('user')
+                  <div class="media-body"><span> #{{Auth::user()->secret_code}}  </span>
+                    <p class="mb-0 font-roboto">ANONYME <i class="middle fa fa-angle-down"></i></p>
+                  </div>
+                @endcan
+
+                @can('admin')
+                  <div class="media-body"><span> {{Auth::user()->name}}  </span>
+                    <p class="mb-0 font-roboto">ADMINISTRATEUR <i class="middle fa fa-angle-down"></i></p>
+                  </div>
+                @endcan
+
+                @can('manager')
+                  <div class="media-body"><span> {{Auth::user()->name}}  </span>
+                    <p class="mb-0 font-roboto">MANAGER <i class="middle fa fa-angle-down"></i></p>
+                  </div>
+                @endcan
             </div>
             <ul class="profile-dropdown onhover-show-div">
-              <li><a href="#"><i data-feather="user"></i><span>Account </span></a></li>
-              <li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>
-              <li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
-              <li><a href="#"><i data-feather="settings"></i><span>Settings</span></a></li>
+              {{-- <li><a href="#"><i data-feather="user"></i><span>Account </span></a></li> --}}
+              @can('admin')
+                <li><a href="{{route('emails.index')}}"><i data-feather="mail"></i><span>AJOUT MAIL</span></a></li>
+              @endcan
+
+              {{-- <li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a></li> --}}
+              {{-- <li><a href="#"><i data-feather="settings"></i><span>Settings</span></a></li> --}}
               <li>
               <form method="POST" action="{{ route('logout') }}">
                 @csrf
