@@ -68,11 +68,11 @@
                 <tr>
                   <td style="padding: 30px">
                     <h6 style="font-weight: 600">Creation de compte</h6>
-                    <p>Votre administateur vous a créée un compte sur SIGNAL RIGHTS en tant que collaborateur. Cliquer sur le lien ci dessous pour vous connecter ou réinitialiser votre mot de passe</p>
+                    <p>Votre administateur vous a créée un compte sur AMNESTY-BENIN en tant que collaborateur. Cliquer sur le lien ci dessous pour vous connecter ou réinitialiser votre mot de passe</p>
                     <p style="text-align: center">
                         <a href="{{$url}}" style="padding: 10px; background-color: #7366ff; color: #fff; display: inline-block; border-radius: 4px">Connexion</a></p>
                     <p style="margin-bottom: 0">
-                      Chaleureusement,<br>SIGNAL RIGHTS</p>
+                      Chaleureusement,<br>AMNESTY-BENIN</p>
                   </td>
                 </tr>
               </tbody>

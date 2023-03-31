@@ -58,9 +58,13 @@ class ComplementController extends Controller
             $admin = User::where('role', 'admin')->first();
             $emails = Email::pluck('mail')->toArray();
 
-            Mail::to($admin->email)
-            ->cc($emails)
-            ->send($mail);
+            try {
+                Mail::to($admin->email)
+                    ->cc($emails)
+                    ->send($mail);
+            } catch (\Exception $e) {
+                // Ne rien faire
+            }
 
         }
 

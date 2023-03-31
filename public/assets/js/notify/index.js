@@ -17,6 +17,6 @@ var notify = $.notify(
 setTimeout(function () {
   notify.update(
     "message",
-    '<i class="fa fa-bell-o"></i><strong>Bienvenue</strong> sur SIGNAL RIGHTS.'
+    '<i class="fa fa-bell-o"></i><strong>Bienvenue</strong> sur AMNESTY-BENIN.'
   );
 }, 1000);

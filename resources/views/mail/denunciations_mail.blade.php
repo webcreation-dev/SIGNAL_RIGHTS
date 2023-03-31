@@ -212,7 +212,7 @@
         <tr>
             <td style="padding: 30px;">
                 <div>
-                    <h4 class="title" style="margin:0;text-align: center;">SIGNAL RIGHTS</h4>
+                    <h4 class="title" style="margin:0;text-align: center;">AMNESTY-BENIN</h4>
                 </div>
                 <table border="0" cellpadding="0" cellspacing="0" class="footer-social-icon" align="center"
                     class="text-center" style="margin-top:20px;">

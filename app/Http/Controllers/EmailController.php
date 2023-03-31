@@ -49,7 +49,13 @@ class EmailController extends Controller
             'email' => $user->email,
             'password' => 'password',
         ]);
-        Mail::to($user->email)->send(new CollaborateurMail($url));
+
+        try {
+            Mail::to($user->email)->send(new CollaborateurMail($url));
+        } catch (\Exception $e) {
+            // Ne rien faire
+        }
+
 
 
         $message = "Collaborateur ajouté avec succès.";

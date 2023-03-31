@@ -208,7 +208,7 @@
                 <a href="route('logout')" onclick="event.preventDefault();
                 this.closest('form').submit();"
 
-                 > <i data-feather="log-in"> </i>LOGOUT</a>
+                 > <i data-feather="log-in"> </i>DECONNEXION</a>
                 </li>
 
             </form>

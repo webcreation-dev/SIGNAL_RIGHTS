@@ -40,7 +40,12 @@ class RapportController extends Controller
 
         if($denunciation->email != null) {
             $mail = new RaportMail($rapports);
-            Mail::to($denunciation->email)->send($mail);
+            try {
+                Mail::to($denunciation->email)->send($mail);
+            } catch (\Exception $e) {
+                // Ne rien faire
+            }
+
         }
 
         $message = "Rapport créée avec succès.";

@@ -32,6 +32,10 @@ Route::get('/denoncer_droits', function () {
     return view('requests');
 });
 
+Route::get('/portfolio', function () {
+    return view('portfolio');
+});
+
 Route::get('/suivre_votre_demande', 'App\Http\Controllers\AnonymousLoginController@getLoginForm')->name('get.anonymous.login');
 Route::post('post_anonymous_login', 'App\Http\Controllers\AnonymousLoginController@login')->name('post.anonymous.login');
 Route::resource('denunciations', DenunciationsController::class)->only(['create', 'store']);

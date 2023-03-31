@@ -25,7 +25,7 @@
                                 <ul class="navbar-nav navbar_nav_modify" id="scroll-spy">
                                     <li class="nav-item"><a class="nav-link" href="#home">ACCUEIL</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#about-us">A PROPOS DE NOUS</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#demo">DEMO</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#demo">GUIDE</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#renseignements">RENSEIGNEMENTS</a></li>
                                     <li class="nav-item"><a class="nav-link" href="http://localhost/SIGNAL_RIGHTS/public/denoncer_droits/#denoncer">DENONCER</a></li>
                                     <li class="nav-item"><a class="nav-link" href="{{route('denunciations.index')}}">SUIVRE MA DEMANDE</a></li>
@@ -44,9 +44,21 @@
                             <div>
                                 <h6 class="content-title"><img class="arrow-decore"
                                         src="{{ asset('assets/images/landing/decore/arrow.svg')}}" alt=""><span
-                                        class="sub-title">Bienvenue sur SIGNAL RIGHTS </span></h6>
+                                        class="sub-title">Bienvenue sur AMNESTY-BENIN </span></h6>
                                 <h1 class="wow fadeIn">Plateforme de  <span>denonciation </span> des <br>
                                 faits attentatoires aux <span>droits humains</span></h1>
+
+                                <div class="row">
+                                    <div class="col-7 d-flex align-items-center justify-content-center">
+                                        <p class="mt-3 wow fadeIn text-center" style="text-align: justify !important; ">Dénoncez les faits et Suivez en temps réel l'évolution de vos dénonciations sur notre plateforme!</p>
+                                    </div>
+                                    <div class="col-5 d-flex align-items-center justify-content-center">
+                                        <a class="btn btn-primary btn-lg purchase-btn" href="http://localhost/SIGNAL_RIGHTS/public/denoncer_droits/#denoncer">DENONCER MAINTENANT </a>
+                                    </div>
+                                </div>
+
+
+
 
                             </div>
                         </div>
@@ -141,7 +153,7 @@
                     <div class="col-sm-12 wow pulse">
                         <div class="landing-title">
                             <h2>
-                                EN SAVOIR PLUS SUR NOUS</h2>
+                                En savoir plus sur nous</h2>
                             <p>Nous luttons contre l’injustice au Bénin et dans le monde.
                                 Nous faisons partie d’un mouvement mondial qui se mobilisent pour la protection des droits humains. </p>
                         </div>
@@ -247,7 +259,7 @@
                     <div class="col-lg-6">
                         <div class="landing-title text-start">
                             {{-- <h5 class="sub-title">Theme Customization</h5> --}}
-                            <h2> <span class="gradient-3">Démo </span> de notre application</h2>
+                            <h2> <span class="gradient-3">Guide </span> de notre application</h2>
                             <p class="m-0">Testez notre application en direct : découvrez ses fonctionnalités en temps réel.</p>
                         </div>
                         <div class="customization-accordion">
@@ -273,7 +285,7 @@
                                         <h2 class="accordion-header" id="headingTwo">
                                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                                 data-bs-target="#collapseTwo" aria-expanded="true"
-                                                aria-controls="collapseTwo">Formulaire de denunciation</button>
+                                                aria-controls="collapseTwo">Formulaire de denonciation</button>
                                         </h2>
                                         <div class="accordion-collapse collapse show" id="collapseTwo"
                                             aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -628,8 +640,230 @@
                 </div>
             </section>
 
+            <div class="bottom-section-grad">
+                <section class="section-space about-section pb-0">
+                    <div class="container-fluid fluid-space">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="landing-title text-center">
+                                    <h5 class="sub-title">Best Customer Feedback</h5>
+                                    <h2>The opinions of our <span class="gradient-10">valuable </span> Customers</h2>
+                                    <p>we are always be there for your issues and support.if any query you can ask us on our
+                                        theme supports</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="testimonial-slider">
+                                    <div class="testimonial-box common-card">
+                                        <div class="rating-content">
+                                            <ul class="d-flex ratings gap-1">
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                            <h6 class="mb-0">Feature Availability</h6>
+                                        </div>
+                                        <p class="f-light">Great Template, bought two in less than a week. For this price it
+                                            is ridiculous not to purchase it. Beautiful design all across. Prebuilt
+                                            integration with firebase auth, light and dark theme.</p>
+                                        <p class="f-light">A very very good template.</p>
+                                        <div class="text-end mt-2">
+                                            <h5>flucadetena</h5><span class="font-primary">CUSTOMER</span>
+                                        </div>
+                                        <div class="customer-img"><img src="{{ asset('assets/images/landing/testimonial/1.svg')}}"
+                                                alt="vector men"></div>
+                                    </div>
+                                    <div class="testimonial-box common-card">
+                                        <div class="rating-content">
+                                            <ul class="d-flex ratings gap-1">
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                            <h6 class="mb-0">Design Quality</h6>
+                                        </div>
+                                        <p class="f-light">I really love the Design.</p>
+                                        <p class="f-light"> I am using the React Option btw.</p>
+                                        <p class="f-light"> The Documentation is great and for 5$ you can't do anything
+                                            wrong here.Its pretty easy to swap out the default design or implement a dark
+                                            mode. I wish there was a tsx version(React Typescript) out of the box. But even
+                                            wighout its great to work with.</p>
+                                        <div class="text-end mt-2">
+                                            <h5>MenschenToaster</h5><span class="font-primary">CUSTOMER</span>
+                                        </div>
+                                        <div class="customer-img"><img src="{{ asset('assets/images/landing/testimonial/2.svg')}}"
+                                                alt="vector men"></div>
+                                    </div>
+                                    <div class="testimonial-box common-card">
+                                        <div class="rating-content">
+                                            <ul class="d-flex ratings gap-1">
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                            <h6 class="mb-0">Code Quality</h6>
+                                        </div>
+                                        <p class="f-light">Design, code quality, documentation, features, and best part is
+                                            easy to integrate in project. This is a great product with great support. I
+                                            loved the code quality which reduced my project time.</p>
+                                        <div class="text-end mt-2">
+                                            <h5>manthandesai999 </h5><span class="font-primary">CUSTOMER</span>
+                                        </div>
+                                        <div class="customer-img"><img src="{{ asset('assets/images/landing/testimonial/3.svg')}}"
+                                                alt="vector women"></div>
+                                    </div>
+                                    <div class="testimonial-box common-card">
+                                        <div class="rating-content">
+                                            <ul class="d-flex ratings gap-1">
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                            <h6 class="mb-0">Code Quality</h6>
+                                        </div>
+                                        <p class="f-light">This is amazing! Seriously great job right here. Please increase
+                                            price because you are simply offering this nearly for free.</p>
+                                        <div class="text-end mt-2">
+                                            <h5>maidot</h5><span class="font-primary">CUSTOMER</span>
+                                        </div>
+                                        <div class="customer-img"><img src="{{ asset('assets/images/landing/testimonial/1.svg')}}"
+                                                alt="vector men"></div>
+                                    </div>
+                                    <div class="testimonial-box common-card">
+                                        <div class="rating-content">
+                                            <ul class="d-flex ratings gap-1">
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                            <h6 class="mb-0">Customer Support</h6>
+                                        </div>
+                                        <p class="f-light">Customer support is excelent. whenever have problem and not
+                                            uderstand their support section always helps me. and Admin panel is very nice.
+                                            Thanks</p>
+                                        <div class="text-end mt-2">
+                                            <h5>mahbuburriad</h5><span class="font-primary">CUSTOMER</span>
+                                        </div>
+                                        <div class="customer-img"><img src="{{ asset('assets/images/landing/testimonial/2.svg')}}"
+                                                alt="vector men"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="faq-section section-space" id="faq">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="landing-title text-center">
+                                    <h5 class="sub-title">Frequently Ask Question</h5>
+                                    <h2>Do you have <span class="gradient-11">any Question? </span> Look Here</h2>
+                                    <p>You can freely reach out to us at any time with any questions! We'd always be happy
+                                        to serve you.</p>
+                                </div>
+                                <div class="vector-image"> <img src="{{ asset('assets/images/landing/vectors/4.svg')}}"
+                                        alt="vector women"></div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="accordion" id="faqaccordion">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="faq1">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#faqOne" aria-expanded="true" aria-controls="faqOne">How can
+                                                you assist me in achieving the ideal user behaviour?</button>
+                                        </h2>
+                                        <div class="accordion-collapse collapse show" id="faqOne" aria-labelledby="faq1"
+                                            data-bs-parent="#faqaccordion">
+                                            <div class="accordion-body f-light">
+                                                Our team will assess the industry and undertake in-depth user
+                                                research. We'll design templates and different website
+                                                demonstrations, drive engagement, and do A/B tests to determine
+                                                whether they are operating at their peak capacity.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="faq2">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false"
+                                                aria-controls="faqTwo">How long will the website's design take?</button>
+                                        </h2>
+                                        <div class="accordion-collapse collapse" id="faqTwo" aria-labelledby="faq2"
+                                            data-bs-parent="#faqaccordion">
+                                            <div class="accordion-body f-light">
+                                                Well, it certainly depends on what the clients want, therefore we
+                                                really pay close attention to what the "X Factor" is that the
+                                                customer or company needs to distinguish itself from the
+                                                competition.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="faq3">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false"
+                                                aria-controls="faqThree">Are there any hidden fees?</button>
+                                        </h2>
+                                        <div class="accordion-collapse collapse" id="faqThree" aria-labelledby="faq3"
+                                            data-bs-parent="#faqaccordion">
+                                            <div class="accordion-body f-light">
+                                                The pricing is the entire sum that you will have to pay. There are
+                                                no setup fees, cancellation fees, or other extra or hidden costs.
+                                                Everything you need to pay for, including all taxes, is included in
+                                                the package.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="faq4">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#faqFour" aria-expanded="false"
+                                                aria-controls="faqFour">What do you mean by item and end product?</button>
+                                        </h2>
+                                        <div class="accordion-collapse collapse" id="faqFour" aria-labelledby="faq4"
+                                            data-bs-parent="#faqaccordion">
+                                            <div class="accordion-body f-light">The item is what you purchase from Envato
+                                                Market. The end product is what you build with that item.</div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="faq5">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#faqFive" aria-expanded="false"
+                                                aria-controls="faqFive">Can I use an item as an element of my logo or
+                                                branding?</button>
+                                        </h2>
+                                        <div class="accordion-collapse collapse" id="faqFive" aria-labelledby="faq5"
+                                            data-bs-parent="#faqaccordion">
+                                            <div class="accordion-body f-light">Only items from the logo category on
+                                                GraphicRiver are intended to be used as logos. Other items can't be used in
+                                                logos or branding. None of our items, not even logos, can be trademarked.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
         </div>
     </div>
+
+
 
     <x-footer-landing />
     <x-footer-crm />

@@ -77,14 +77,17 @@ class DenunciationsController extends Controller
             ]);
         }
 
-        // $mail = new DenunciationsMail($denunciation);
+        $mail = new DenunciationsMail($denunciation);
+        $admin = User::where('role', 'admin')->first();
+        $emails = Email::pluck('mail')->toArray();
 
-        // $admin = User::where('role', 'admin')->first();
-        // $emails = Email::pluck('mail')->toArray();
-        // Mail::to($admin->email)
-        // ->cc($emails)
-        // ->send($mail);
-
+        try {
+            Mail::to($admin->email)
+                ->cc($emails)
+                ->send($mail);
+        } catch (\Exception $e) {
+            // Ne rien faire
+        }
 
         $message = "Denonciation envoyé avec succès.";
         session()->flash('message', $message);
