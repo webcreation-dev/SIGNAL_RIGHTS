@@ -40,17 +40,17 @@
                                 <ul class="navbar-nav navbar_nav_modify" id="scroll-spy">
 
 
-                                    <li class="nav-item"><a class="nav-link" href="http://localhost/SIGNAL_RIGHTS/public/#home">ACCUEIL</a></li>
+                                    {{-- <li class="nav-item"><a class="nav-link" href="http://localhost/SIGNAL_RIGHTS/public/#home">ACCUEIL</a></li> --}}
                                     <li class="nav-item"><a class="nav-link" href="http://localhost/SIGNAL_RIGHTS/public/#about-us">A PROPOS DE NOUS</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="http://localhost/SIGNAL_RIGHTS/public/#demo">DEMO</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="http://localhost/SIGNAL_RIGHTS/public/#renseignements">RENSEIGNEMENTS</a></li>
+                                    {{-- <li class="nav-item"><a class="nav-link" href="http://localhost/SIGNAL_RIGHTS/public/#demo">DEMO</a></li> --}}
+                                    {{-- <li class="nav-item"><a class="nav-link" href="http://localhost/SIGNAL_RIGHTS/public/#renseignements">RENSEIGNEMENTS</a></li> --}}
                                     <li class="nav-item"><a class="nav-link" href="#denoncer">DENONCER</a></li>
                                     <li class="nav-item"><a class="nav-link" href="{{route('denunciations.index')}}">SUIVRE MA DEMANDE</a></li>
                                     </li>
                                     <li class="nav-item"><a class="nav-link" href="http://localhost/SIGNAL_RIGHTS/public/#faq">FAQ</a></li>
                                 </ul>
                             </div>
-                            <div class="buy-btn rounded-pill"><a class="nav-link js-scroll"
+                            <div class="buy-btn "><a class="nav-link js-scroll"
                                   href="{{route('login')}}">CONNEXION</a></div>
                         </nav>
                     </header>
@@ -80,7 +80,7 @@
                                 <h6 class="rating-title mb-0">4.5 <span class="f-light">(110 rating)</span></h6>
                             </div> --}}
                             <h2> <span class="gradient-1">Signalement anonyme </span> de violations des droits</h2>
-                            <p>Aidez-nous à lutter contre les abus et à protéger les droits fondamentaux en signalant de
+                            <p >Aidez-nous à lutter contre les abus et à protéger les droits fondamentaux en signalant de
                                 manière confidentielle les cas de violations des droits humains.</p>
                         </div>
                     </div>
